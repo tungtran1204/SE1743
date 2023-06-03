@@ -12,7 +12,7 @@ public class SQLServerConnection {
 
     public static final String HOSTNAME = "localhost";
     public static final String PORT = "1433";
-    public static final String DBNAME = "testDb";
+    public static final String DBNAME = "PRJSHOP";
     public static final String USERNAME = "sa";
     public static final String PASSWORD = "sa";
 
