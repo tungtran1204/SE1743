@@ -7,21 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-<link href="assets/css/signIn.css" rel="stylesheet" type="text/css" media="all">
-<style>
+<link href="assets/css/sign-in.css" rel="stylesheet" type="text/css" media="all">
+<!--<style>
     body{
         background-image: url(assets/img/24052021_ROB_01.webp);
     }
-</style>
+</style>-->
 <body>
   <form>
     <h3>Sign in</h3>
 
     <label for="username">Username</label>
-    <input type="email" placeholder="Email" id="username">
+    <input type="email" placeholder="Email" id="username" required="">
 
     <label for="password">Password</label>
-    <input type="password" placeholder="Password" id="password">
+    <input type="password" placeholder="Password" id="password" required="">
 
     <button>SIGN IN</button>
     <div class="social">

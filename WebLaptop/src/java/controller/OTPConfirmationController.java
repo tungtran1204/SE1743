@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpSession;
  *
  * @author DELL
  */
-@WebServlet(name = "OTPConfirmation", urlPatterns = {"/otp-confirmation2"})
+@WebServlet(name = "OTPConfirmation", urlPatterns = {"/otp-confirmation"})
 public class OTPConfirmationController extends HttpServlet {
 
     /**
@@ -58,7 +58,7 @@ public class OTPConfirmationController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("otp-confirmation2.jsp").forward(request, response);
+        request.getRequestDispatcher("otp-confirmation.jsp").forward(request, response);
     }
 
     /**
@@ -83,7 +83,7 @@ public class OTPConfirmationController extends HttpServlet {
             response.sendRedirect("password-creation");
         } else {
             request.setAttribute("msg", "OTP wrong, enter again");
-            request.getRequestDispatcher("otp-confirmation2.jsp").forward(request, response);
+            request.getRequestDispatcher("otp-confirmation.jsp").forward(request, response);
         }
     }
 

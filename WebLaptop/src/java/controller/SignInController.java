@@ -21,7 +21,7 @@ import static org.apache.tomcat.jni.User.username;
  *
  * @author DELL
  */
-@WebServlet(name = "SignInController", urlPatterns = {"/login"})
+@WebServlet(name = "SignInController", urlPatterns = {"/sign-in"})
 public class SignInController extends HttpServlet {
     private static final String REMEMBER_ME_COOKIE_USERNAME = "rememberMeUsername";
     private static final String REMEMBER_ME_COOKIE_PASSWORD = "rememberMePasword";
@@ -88,7 +88,7 @@ public class SignInController extends HttpServlet {
             } 
         }
 
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+        request.getRequestDispatcher("sign-in.jsp").forward(request, response);
     }
     
     /**
