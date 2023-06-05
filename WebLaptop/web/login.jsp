@@ -29,10 +29,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     <br>
                     <br>
                     <br><br>
-                    
                     <span>Your email:</span>
-
-                    <input  type="email" placeholder="Email" />
+                    <input name="email" type="email" placeholder="Email" required=""/>
+                    <div style="color: red">
+                        ${requestScope.msg}
+                    </div>
                     <br>
                     <button type="submit" >Get OTP</button>
                     <br>

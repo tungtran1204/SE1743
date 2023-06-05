@@ -79,17 +79,17 @@ public class SignUpController extends HttpServlet {
         AccountDAO accountDAO = new AccountDAO();
         
         String email = request.getParameter("email");
-//        if (accountDAO.getOneByEmail(email) != null) {
-//            request.setAttribute("msg", "Email already exist! Input again");
-//            request.getRequestDispatcher("sign-up.jsp").forward(request, response);
-//        } else {
+        if (accountDAO.getOneByEmail(email) != null) {
+            request.setAttribute("msg", "Email already exist! Input again");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        } else {
             session.setAttribute("email", email);
             String otp = Helper.genRandSixDigit();
             session.setAttribute("systemOtp", otp);
 
             Mail.send(email, "OTP to sign ", otp);
             response.sendRedirect("otp-confirmation2");
-//        }
+        }
     }
 
     /**
