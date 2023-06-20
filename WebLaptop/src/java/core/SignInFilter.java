@@ -109,7 +109,7 @@ public class SignInFilter implements Filter {
         HttpSession session = req.getSession();
         Account isLoginsuccess =  (Account) session.getAttribute("accountCur");
         if (isLoginsuccess != null) {
-            resp.sendRedirect("/Buoi2");
+            resp.sendRedirect("/WebLaptop");
         } else {
             chain.doFilter(request, response);
         }

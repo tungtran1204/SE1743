@@ -14,9 +14,11 @@
         }
     </style>-->
     <body>
-        <form>
+        <form action="sign-in" method="post">
             <h3>Sign in</h3>
-
+            <div style="color: red">
+                ${requestScope.msg}
+            </div>
             <label for="username">Username</label>
             <input type="email" placeholder="Email" id="username" required="">
 

@@ -111,7 +111,7 @@ public class SignInController extends HttpServlet {
         Account account = accountDAO.authenticate(username, password);
         if (account == null) {
             request.setAttribute("msg", "Sign in fail username or pasword");
-            request.getRequestDispatcher("login").forward(request, response);
+            request.getRequestDispatcher("sign-in").forward(request, response);
         } else {
             session.setAttribute("accountCur", account);
             if (isRemeberMe) {
@@ -122,7 +122,7 @@ public class SignInController extends HttpServlet {
                 response.addCookie(cookieUsername);
                 response.addCookie(cookiePassword);
             }
-            response.sendRedirect("/Buoi2");
+            response.sendRedirect("/WebLaptop");
         }
     }
 
