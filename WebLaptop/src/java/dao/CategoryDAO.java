@@ -25,8 +25,8 @@ public class CategoryDAO {
                 + "      ,[categoryName]\n"
                 + "      ,[categoryIcon]\n"
                 + "	  ,(SELECT COUNT(productId) from product p WHERE p.categoryId = c.categoryId) as numberOfProduct\n"
-                + "  FROM [PRJShop].[dbo].[Category] c";//
-
+                + "  FROM [LaptopShop].[dbo].[Category] c";//
+System.out.println(sql);
         try ( Connection connection = SQLServerConnection.getConnection();  PreparedStatement ps = connection.prepareStatement(sql);) {
             ResultSet rs = ps.executeQuery();
 

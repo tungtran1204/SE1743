@@ -34,9 +34,9 @@
                 -webkit-box-orient: vertical;
             }
             .icon-brands {
+                display: flex
                 justify-content: center;
                 align-items: center;
-                display: flex
             }
         </style>
     </head>
@@ -161,7 +161,7 @@
                             <div class="cat-item d-flex align-items-center mb-4">
                                 <div class="overflow-hidden" style="width: 100px; height: 100px;">
                                     <img class="img-fluid icon-brands" src="${c.categoryIcon}" alt="">
-                                </div>
+                                </div>  
                                 <div class="flex-fill pl-3">
                                     <h6>${c.categoryName}</h6>
                                     <small class="text-body">${c.numberOfProduct} Products</small>
