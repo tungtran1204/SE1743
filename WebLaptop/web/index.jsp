@@ -34,9 +34,9 @@
                 -webkit-box-orient: vertical;
             }
             .icon-brands {
-                display: flex
+/*                display: flex
                 justify-content: center;
-                align-items: center;
+                align-items: center;*/
             }
         </style>
     </head>
