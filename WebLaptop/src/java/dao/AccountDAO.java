@@ -93,6 +93,6 @@ public class AccountDAO {
     }
     
     public static void main(String[] args) {
-        System.out.println(new AccountDAO().authenticate("quocpqhe163061@fpt.edu.vn", "123456"));
+//        System.out.println(new AccountDAO().authenticate("quocpqhe163061@fpt.edu.vn", "123456"));
     }
 }
