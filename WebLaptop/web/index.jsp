@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,6 +39,7 @@
                 justify-content: center;
                 align-items: center;*/
             }
+            
         </style>
     </head>
 
@@ -58,9 +60,9 @@
                 <div class="col-lg-8">
                     <div id="header-carousel" class="carousel slide carousel-fade mb-30 mb-lg-0" data-ride="carousel">
                         <ol class="carousel-indicators">
-                            <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
+<!--                            <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
                             <li data-target="#header-carousel" data-slide-to="1"></li>
-                            <li data-target="#header-carousel" data-slide-to="2"></li>
+                            <li data-target="#header-carousel" data-slide-to="2"></li>-->
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item position-relative active" style="height: 430px;">
@@ -73,7 +75,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="carousel-item position-relative" style="height: 430px;">
+<!--                            <div class="carousel-item position-relative" style="height: 430px;">
                                 <img class="position-absolute w-100 h-100" src="assets/img/carousel-2.jpg" style="object-fit: cover;">
                                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                     <div class="p-3" style="max-width: 700px;">
@@ -92,7 +94,7 @@
                                         <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -124,25 +126,25 @@
             <div class="row px-xl-5 pb-3">
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
-                        <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
+                        <img src="assets/img/service_img1.webp"/>
                         <h5 class="font-weight-semi-bold m-0">Quality Product</h5>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
-                        <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
+                        <img src="assets/img/service_img2.webp"/>
                         <h5 class="font-weight-semi-bold m-0">Free Shipping</h5>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
-                        <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
+                        <img src="assets/img/service_img3.webp"/>
                         <h5 class="font-weight-semi-bold m-0">14-Day Return</h5>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
-                        <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
+                        <img src="assets/img/service_img4.webp"/>
                         <h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
                     </div>
                 </div>
@@ -190,7 +192,8 @@
                             <div class="text-center py-4">
                                 <a class="h6 text-decoration-none product-name" href="product-detail?productId=${p.productId}">${p.productName}</a>
                                 <div class="d-flex align-items-center justify-content-center mt-2">
-                                    <h5>${p.productPrice}VND</h5>
+                                    <fmt:formatNumber value="${p.productPrice}" pattern="#,###" var="formattedPrice" />
+                                    <h5>${formattedPrice} ₫</h5>
                                     <!--<h6 class="text-muted ml-2"><del>$123.00</del></h6>-->
                                 </div>
                                 <div class="d-flex align-items-center justify-content-center mb-1">

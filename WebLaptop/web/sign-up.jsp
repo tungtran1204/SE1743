@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
     </head>
-    <link href="assets/css/sign-up.css" rel="stylesheet" type="text/css" media="all">
+    <link href="assets/css/sign-up.css?v=3" rel="stylesheet" type="text/css" media="all">
 
     <body>
         <form action="sign-up" method="post">
