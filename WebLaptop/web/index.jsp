@@ -256,7 +256,8 @@
                             <div class="text-center py-4">
                                 <a class="h6 text-decoration-none product-name" href="product-detail?productId=${p.productId}">${p.productName}</a>
                                 <div class="d-flex align-items-center justify-content-center mt-2">
-                                    <h5>${p.productPrice}</h5>
+                                    <fmt:formatNumber value="${p.productPrice}" pattern="#,###" var="formattedPrice" />
+                                    <h5>${formattedPrice} ₫</h5>
                                     <!--<h6 class="text-muted ml-2"><del>$123.00</del></h6>-->
                                 </div>
                                 <div class="d-flex align-items-center justify-content-center mb-1">
