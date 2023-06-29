@@ -155,15 +155,15 @@
 
         <!-- Categories Start -->
         <div class="container-fluid pt-5">
-            <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Brands</span></h2>
+            <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Categories</span></h2>
             <div class="row px-xl-5 pb-3">
                 <c:forEach items="${requestScope.lstCategory}" var="c">
                     <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                         <a class="text-decoration-none" href="shop?categoryId=${c.categoryId}">
                             <div class="cat-item d-flex align-items-center mb-4">
                                 <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                                    <img class="img-fluid icon-brands" src="${c.categoryIcon}" alt="">
-                                </div>  
+                                    <img class="img-fluid" src="${c.categoryIcon}" alt="">
+                                </div>
                                 <div class="flex-fill pl-3">
                                     <h6>${c.categoryName}</h6>
                                     <small class="text-body">${c.numberOfProduct} Products</small>
@@ -283,25 +283,25 @@
 
         <!-- Footer Start -->
         <%@include file="component/footer.jsp" %>
-        <!-- Footer End -->
+    <!-- Footer End -->
 
 
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 
-        <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/lib/easing/easing.min.js"></script>
-        <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/lib/easing/easing.min.js"></script>
+    <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script>
 
-        <!-- Contact Javascript File -->
-        <script src="assets/mail/jqBootstrapValidation.min.js"></script>
-        <script src="assets/mail/contact.js"></script>
+    <!-- Contact Javascript File -->
+    <script src="assets/mail/jqBootstrapValidation.min.js"></script>
+    <script src="assets/mail/contact.js"></script>
 
-        <!-- Template Javascript -->
-        <script src="assets/js/main.js"></script>
-    </body>
+    <!-- Template Javascript -->
+    <script src="assets/js/main.js"></script>
+</body>
 
 </html>
