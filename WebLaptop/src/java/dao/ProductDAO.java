@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class ProductDAO {
 
-    public int size(String[] sizeIds, String priceFrom, String priceTo) {
+    public int size(String[] typeIds, String priceFrom, String priceTo) {
 
         String sql = "SELECT COUNT(a.productId) as total from("
                 + "Select DISTINCT\n"
@@ -32,16 +32,18 @@ public class ProductDAO {
                 + "	p.categoryId,\n"
                 + "	p.productIsFeatured,\n"
                 + "	p.productIsRecent,\n"
-                + "	p.productDeleted\n"
+                + "	p.productDeleted,\n"
+                + "     p.typeId,\n"
+                + "     p.quantity\n"
                 + "from product p \n"
                 + "	JOIN ProductSize ps ON p.productId = ps.productId"
                 + " Where p.productPrice between ? and ? ";
-        if (sizeIds != null) {
+        if (typeIds != null) {
             sql += " AND (";
-            for (int i = 0; i < sizeIds.length - 1; i++) {
-                sql += " ps.sizeId = " + sizeIds[i] + " OR ";
+            for (int i = 0; i < typeIds.length - 1; i++) {
+                sql += " ps.typeId = " + typeIds[i] + " OR ";
             }
-            sql += " ps.sizeId = " + sizeIds[sizeIds.length - 1] + " ) ";
+            sql += " ps.typeId = " + typeIds[typeIds.length - 1] + " ) ";
         }
         sql += ") as a";
         try ( Connection connection = SQLServerConnection.getConnection();  PreparedStatement ps = connection.prepareStatement(sql);) {
@@ -59,7 +61,7 @@ public class ProductDAO {
         return 0;
     }
 
-    public List<Product> getListProductPerPage(int numberProductPerPage, int pageCur, String[] sizeIds, String priceFrom, String priceTo) {
+    public List<Product> getListProductPerPage(int numberProductPerPage, int pageCur, String[] typeIds, String priceFrom, String priceTo) {
 
         String sql = ""
                 + "Select DISTINCT\n"
@@ -71,16 +73,17 @@ public class ProductDAO {
                 + "	p.categoryId,\n"
                 + "	p.productIsFeatured,\n"
                 + "	p.productIsRecent,\n"
-                + "	p.productDeleted\n"
+                + "	p.productDeleted,\n"
+                + "     p.typeId,\n"
+                + "     p.quantity\n"
                 + "from product p \n"
-                + "	JOIN ProductSize ps ON p.productId = ps.productId"
                 + " Where p.productPrice between ? and ? ";
-        if (sizeIds != null) {
+        if (typeIds != null) {
             sql += " AND (";
-            for (int i = 0; i < sizeIds.length - 1; i++) {
-                sql += " ps.sizeId = " + sizeIds[i] + " OR ";
+            for (int i = 0; i < typeIds.length - 1; i++) {
+                sql += " p.typeId = " + typeIds[i] + " OR ";
             }
-            sql += " ps.sizeId = " + sizeIds[sizeIds.length - 1] + " ) ";
+            sql += " p.typeId = " + typeIds[typeIds.length - 1] + " ) ";
         }
         sql += " Order BY p.productId\n"
                 + "OFFSET ? ROWS \n"
@@ -104,6 +107,8 @@ public class ProductDAO {
                         .productIsFeatured(rs.getBoolean("productIsFeatured"))
                         .productIsRecent(rs.getBoolean("productIsRecent"))
                         .productDeleted(rs.getBoolean("productDeleted"))
+                        .typeId(rs.getInt("typeId"))
+                        .quantity(rs.getInt("quantity"))
                         .build();
                 list.add(s);
             }
@@ -114,7 +119,7 @@ public class ProductDAO {
         return null;
     }
 
-    public List<Product> getListProductPerPageByCategoryId(int numberProductPerPage, int pageCur, int categoryId, String[] sizeIds, String priceFrom, String priceTo) {
+    public List<Product> getListProductPerPageByCategoryId(int numberProductPerPage, int pageCur, int categoryId, String[] typeIds, String priceFrom, String priceTo) {
 
         String sql = ""
                 + "Select DISTINCT\n"
@@ -126,16 +131,18 @@ public class ProductDAO {
                 + "	p.categoryId,\n"
                 + "	p.productIsFeatured,\n"
                 + "	p.productIsRecent,\n"
-                + "	p.productDeleted\n"
+                + "	p.productDeleted,\n"
+                + "     p.typeId,\n"
+                + "     p.quantity\n"
                 + "from product p \n"
                 + "	JOIN ProductSize ps ON p.productId = ps.productId"
                 + " Where categoryId = ? And p.productPrice between ? and ? ";
-        if (sizeIds != null) {
+        if (typeIds != null) {
             sql += " AND (";
-            for (int i = 0; i < sizeIds.length - 1; i++) {
-                sql += " ps.sizeId = " + sizeIds[i] + " OR ";
+            for (int i = 0; i < typeIds.length - 1; i++) {
+                sql += " ps.typeId = " + typeIds[i] + " OR ";
             }
-            sql += " ps.sizeId = " + sizeIds[sizeIds.length - 1] + " ) ";
+            sql += " ps.typeId = " + typeIds[typeIds.length - 1] + " ) ";
         }
         sql += " Order BY p.productId\n"
                 + "OFFSET ? ROWS \n"
@@ -161,6 +168,8 @@ public class ProductDAO {
                         .productIsFeatured(rs.getBoolean("productIsFeatured"))
                         .productIsRecent(rs.getBoolean("productIsRecent"))
                         .productDeleted(rs.getBoolean("productDeleted"))
+                        .typeId(rs.getInt("typeId"))
+                        .quantity(rs.getInt("quantity"))
                         .build();
                 list.add(s);
             }
@@ -199,6 +208,8 @@ public class ProductDAO {
                         .productIsFeatured(rs.getBoolean("productIsFeatured"))
                         .productIsRecent(rs.getBoolean("productIsRecent"))
                         .productDeleted(rs.getBoolean("productDeleted"))
+                        .typeId(rs.getInt("typeId"))
+                        .quantity(rs.getInt("quantity"))
                         .build();
                 list.add(s);
             }
@@ -209,7 +220,7 @@ public class ProductDAO {
         return null;
     }
 
-    public int sizeByCategory(int categoryId, String[] sizeIds, String priceFrom, String priceTo) {
+    public int sizeByCategory(int categoryId, String[] typeIds, String priceFrom, String priceTo) {
 
         String sql = "SELECT COUNT(a.productId) as total from("
                 + "Select DISTINCT\n"
@@ -221,16 +232,18 @@ public class ProductDAO {
                 + "	p.categoryId,\n"
                 + "	p.productIsFeatured,\n"
                 + "	p.productIsRecent,\n"
-                + "	p.productDeleted\n"
+                + "	p.productDeleted,\n"
+                + "     p.typeId,\n"
+                + "     p.quantity\n"
                 + "from product p \n"
                 + "	JOIN ProductSize ps ON p.productId = ps.productId"
                 + " Where categoryId = ? and p.productPrice between ? and ? ";
-        if (sizeIds != null) {
+        if (typeIds != null) {
             sql += " AND (";
-            for (int i = 0; i < sizeIds.length - 1; i++) {
-                sql += " ps.sizeId = " + sizeIds[i] + " OR ";
+            for (int i = 0; i < typeIds.length - 1; i++) {
+                sql += " ps.typeId = " + typeIds[i] + " OR ";
             }
-            sql += " ps.sizeId = " + sizeIds[sizeIds.length - 1] + " ) ";
+            sql += " ps.typeId = " + typeIds[typeIds.length - 1] + " ) ";
         }
         sql += ") as a";
 
@@ -290,6 +303,8 @@ public class ProductDAO {
                         .productIsFeatured(rs.getBoolean("productIsFeatured"))
                         .productIsRecent(rs.getBoolean("productIsRecent"))
                         .productDeleted(rs.getBoolean("productDeleted"))
+                        .typeId(rs.getInt("typeId"))
+                        .quantity(rs.getInt("quantity"))
                         .build();
                 list.add(s);
             }
@@ -319,6 +334,8 @@ public class ProductDAO {
                         .productIsFeatured(rs.getBoolean("productIsFeatured"))
                         .productIsRecent(rs.getBoolean("productIsRecent"))
                         .productDeleted(rs.getBoolean("productDeleted"))
+                        .typeId(rs.getInt("typeId"))
+                        .quantity(rs.getInt("quantity"))
                         .build();
                 list.add(s);
             }
@@ -348,6 +365,8 @@ public class ProductDAO {
                         .productIsFeatured(rs.getBoolean("productIsFeatured"))
                         .productIsRecent(rs.getBoolean("productIsRecent"))
                         .productDeleted(rs.getBoolean("productDeleted"))
+                        .typeId(rs.getInt("typeId"))
+                        .quantity(rs.getInt("quantity"))
                         .build();
                 return s;
             }
@@ -376,6 +395,8 @@ public class ProductDAO {
                         .productIsFeatured(rs.getBoolean("productIsFeatured"))
                         .productIsRecent(rs.getBoolean("productIsRecent"))
                         .productDeleted(rs.getBoolean("productDeleted"))
+                        .typeId(rs.getInt("typeId"))
+                        .quantity(rs.getInt("quantity"))
                         .build();
                 list.add(p);
             }
@@ -387,7 +408,7 @@ public class ProductDAO {
     }
 
     public static void main(String[] args) {
-        String[] i = {"1", "2", "3"};
-        System.out.println(new ProductDAO().getOne(12));
+        String[] i = {"1", "2"};
+        System.out.println(new ProductDAO().getListProductPerPage(4, 1, i, "0", "1000000000"));
     }
 }

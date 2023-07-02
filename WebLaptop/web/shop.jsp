@@ -91,20 +91,20 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-12"> 
-                                    <input type="hidden" id="priceFrom" name="priceFrom" value="123213213">
-                                    <input type="hidden" id="priceTo" name="priceTo" value="12312">
+                                    <input type="hidden" id="priceFrom" name="priceFrom" value="0">
+                                    <input type="hidden" id="priceTo" name="priceTo" value="1000000000">
                                 </div>
                             </div>
                         </div>
                         <!-- Price End -->
 
                         <!-- Size Start -->
-                        <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter by size</span></h5>
+                        <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter by type</span></h5>
                         <div class="bg-light p-4 mb-30">
-                            <c:forEach items="${requestScope.lstSize}" var="s">
+                            <c:forEach items="${requestScope.lstType}" var="s">
                                 <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                    <input name="sizeId" <c:if test="${Helper.contains(requestScope.sizeIds, s.sizeId)}"> checked=""</c:if> value="${s.sizeId}" type="checkbox" class="custom-control-input" id="size-${s.sizeId}">
-                                    <label class="custom-control-label" for="size-${s.sizeId}">${s.sizeValue}</label>
+                                    <input name="typeId" value="${s.typeId}" type="checkbox" class="custom-control-input" id="type-${s.typeId}">
+                                    <label class="custom-control-label" for="type-${s.typeId}">${s.typeValue}</label>
                                 </div>
                             </c:forEach>
                         </div>

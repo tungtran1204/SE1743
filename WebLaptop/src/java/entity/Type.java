@@ -16,8 +16,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Size {
-    int sizeId;
-    String sizeValue;
+public class Type {
+    int typeId;
+    String typeValue;
     
 }

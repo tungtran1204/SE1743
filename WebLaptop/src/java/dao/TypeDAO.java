@@ -5,7 +5,7 @@
 package dao;
 
 import connection.SQLServerConnection;
-import entity.Size;
+import entity.Type;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,20 +17,20 @@ import java.util.List;
  *
  * @author DELL
  */
-public class SizeDAO {
+public class TypeDAO {
 
-    public List<Size> getAll() {
+    public List<Type> getAll() {
 
-        String sql = "SELECT * FROM Size";//
+        String sql = "SELECT * FROM Type";//
 
         try ( Connection connection = SQLServerConnection.getConnection();  PreparedStatement ps = connection.prepareStatement(sql);) {
             ResultSet rs = ps.executeQuery();
 
-            List<Size> list = new ArrayList<>();//
+            List<Type> list = new ArrayList<>();//
             while (rs.next()) {
-                Size s = Size.builder()
-                        .sizeId(rs.getInt("sizeId"))
-                        .sizeValue(rs.getString("sizeValue"))
+                Type s = Type.builder()
+                        .typeId(rs.getInt("typeId"))
+                        .typeValue(rs.getString("typeValue"))
                         .build();
                 list.add(s);
             }
@@ -42,7 +42,7 @@ public class SizeDAO {
     }
 
     public static void main(String[] args) {
-        System.out.println(new SizeDAO().getAll());
+        System.out.println(new TypeDAO().getAll());
     }
 
 }

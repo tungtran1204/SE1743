@@ -6,10 +6,10 @@ package controller;
 
 import dao.CategoryDAO;
 import dao.ProductDAO;
-import dao.SizeDAO;
+import dao.TypeDAO;
 import entity.Category;
 import entity.Product;
-import entity.Size;
+import entity.Type;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -72,7 +72,7 @@ public class ShopController extends HttpServlet {
         ProductDAO productDAO = new ProductDAO();
         CategoryDAO categoryDAO = new CategoryDAO();
         List<Integer> lstPage = new ArrayList<>();
-        SizeDAO sizeDAO = new SizeDAO();
+        TypeDAO typeDAO = new TypeDAO();
 
         int categoryId = request.getParameter("categoryId") == null ? 0 : Integer.parseInt(request.getParameter("categoryId"));
         String searchValue = request.getParameter("searchValue");
@@ -82,17 +82,17 @@ public class ShopController extends HttpServlet {
         List<Product> lstProduct;
         String href;
         String priceFrom = request.getParameter("priceFrom") == null? "100000" : request.getParameter("priceFrom");
-        String priceTo = request.getParameter("priceTo")  == null? "1000000" : request.getParameter("priceTo");
-        String[] sizeIds = request.getParameterValues("sizeId");
+        String priceTo = request.getParameter("priceTo")  == null? "1000000000" : request.getParameter("priceTo");
+        String[] typeIds = request.getParameterValues("typeId");
 
         if (categoryId != 0) {
-            lstProduct = productDAO.getListProductPerPageByCategoryId(numberProductPerPage, pageCur, categoryId, sizeIds, priceFrom, priceTo);
+            lstProduct = productDAO.getListProductPerPageByCategoryId(numberProductPerPage, pageCur, categoryId, typeIds, priceFrom, priceTo);
             //href = "shop?categoryId=" + categoryId + "&";
             href = priceFrom.equals("0") ? "shop?categoryId=" + categoryId + "&" : "shop?categoryId=" + categoryId +"&priceFrom=" + priceFrom + "&priceTo=" + priceTo + "&";
-            size = productDAO.sizeByCategory(categoryId, sizeIds, priceFrom, priceTo);
-            if (sizeIds != null) {
-                for (String sizeId : sizeIds) {
-                    href += "&sizeId=" + sizeId + "&";
+            size = productDAO.sizeByCategory(categoryId, typeIds, priceFrom, priceTo);
+            if (typeIds != null) {
+                for (String typeId : typeIds) {
+                    href += "&typeId=" + typeId + "&";
                 }
             }
         } else if (searchValue != null) {
@@ -100,12 +100,12 @@ public class ShopController extends HttpServlet {
             href = "shop?searchValue=" + searchValue + "&";
             size = productDAO.sizeBySearchValue(searchValue);
         } else {
-            lstProduct = productDAO.getListProductPerPage(numberProductPerPage, pageCur, sizeIds, priceFrom, priceTo);
+            lstProduct = productDAO.getListProductPerPage(numberProductPerPage, pageCur, typeIds, priceFrom, priceTo);
             href = priceFrom.equals("0") ? "shop?" : "shop?priceFrom=" + priceFrom + "&priceTo=" + priceTo + "&";
-            size = productDAO.size(sizeIds, priceFrom, priceTo);
-            if (sizeIds != null) {
-                for (String sizeId : sizeIds) {
-                    href += "&sizeId=" + sizeId + "&";
+            size = productDAO.size(typeIds, priceFrom, priceTo);
+            if (typeIds != null) {
+                for (String typeId : typeIds) {
+                    href += "&typeId=" + typeId + "&";
                 }
             }
         }
@@ -116,16 +116,16 @@ public class ShopController extends HttpServlet {
             lstPage.add(i);
         }
         List<Category> lstCategory = categoryDAO.getAll();
-        List<Size> lstSize = sizeDAO.getAll();
+        List<Type> lstType = typeDAO.getAll();
 
-        request.setAttribute("sizeIds", sizeIds);
+        request.setAttribute("typeIds", typeIds);
         request.setAttribute("priceFrom", priceFrom);
         request.setAttribute("priceTo", priceTo);
         request.setAttribute("categoryId", categoryId);
         request.setAttribute("Helper", new Helper());
         request.setAttribute("href", href);
         request.setAttribute("lstCategory", lstCategory);
-        request.setAttribute("lstSize", lstSize);
+        request.setAttribute("lstType", lstType);
         request.setAttribute("lstProduct", lstProduct);
         request.setAttribute("lstPage", lstPage);
         request.setAttribute("pageCur", pageCur);

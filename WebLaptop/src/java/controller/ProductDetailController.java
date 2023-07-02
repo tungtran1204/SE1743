@@ -6,10 +6,8 @@ package controller;
 
 import dao.ProductDAO;
 import dao.ProductImgDetailDAO;
-import dao.ProductSizeDAO;
 import entity.Product;
 import entity.ProductImgDetail;
-import entity.ProductSize;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -66,18 +64,15 @@ public class ProductDetailController extends HttpServlet {
             throws ServletException, IOException {
         ProductDAO productDAO = new ProductDAO();
         ProductImgDetailDAO productImgDetailDAO = new ProductImgDetailDAO();
-        ProductSizeDAO productSizeDAO = new ProductSizeDAO();
         
         int productId = Integer.parseInt(request.getParameter("productId"));
         Product product = productDAO.getOne(productId);
         List<ProductImgDetail> lstProductImgDetail = productImgDetailDAO.getAll(productId);
-        List<ProductSize> lstProductSize = productSizeDAO.getAll(productId);
         List<Product>lstRandProduct = productDAO.getRandByCategoryId(6, product.getCategoryId(), productId);
         
         request.setAttribute("product", product);
         request.setAttribute("lstRandProduct", lstRandProduct);
         request.setAttribute("lstProductImgDetail", lstProductImgDetail);
-        request.setAttribute("lstProductSize", lstProductSize);
         request.getRequestDispatcher("product-detail.jsp").forward(request, response);
     }
 

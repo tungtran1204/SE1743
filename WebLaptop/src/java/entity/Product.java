@@ -27,4 +27,7 @@ public class Product {
     private boolean productIsFeatured;
     private boolean productIsRecent;
     private boolean productDeleted;
+    private int typeId;
+    private int quantity;
+    private Type type;
 }
