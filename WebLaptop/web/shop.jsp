@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +34,9 @@
                 display: -webkit-box;
                 -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
+            }
+            .header {
+                background-color: black;
             }
         </style>
     </head>
@@ -99,7 +103,7 @@
                         <!-- Price End -->
 
                         <!-- Size Start -->
-                        <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter by type</span></h5>
+                        <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Type:</span></h5>
                         <div class="bg-light p-4 mb-30">
                             <c:forEach items="${requestScope.lstType}" var="s">
                                 <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
@@ -145,7 +149,8 @@
                                     <div class="text-center py-4">
                                         <a class="h6 text-decoration-none product-name" href="">${p.productName}</a>
                                         <div class="d-flex align-items-center justify-content-center mt-2">
-                                            <h5>${p.productPrice}</h5>
+                                            <fmt:formatNumber value="${p.productPrice}" pattern="#,###" var="formattedPrice" />
+                                            <h5>${formattedPrice} ₫</h5>
                                             <!--<h6 class="text-muted ml-2"><del>$123.00</del></h6>-->
                                         </div>
                                         <div class="d-flex align-items-center justify-content-center mb-1">
@@ -218,8 +223,8 @@
                     start: [${requestScope.priceFrom}, ${requestScope.priceTo}],
                     step: 10000,
                     range: {
-                        'min': [100000],
-                        'max': [1000000]
+                        'min': [10000000],
+                        'max': [200000000]
                     },
                     format: moneyFormat,
                     connect: true

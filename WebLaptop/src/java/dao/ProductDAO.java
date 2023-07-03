@@ -135,19 +135,19 @@ public class ProductDAO {
                 + "     p.typeId,\n"
                 + "     p.quantity\n"
                 + "from product p \n"
-                + "	JOIN ProductSize ps ON p.productId = ps.productId"
+                
                 + " Where categoryId = ? And p.productPrice between ? and ? ";
         if (typeIds != null) {
             sql += " AND (";
             for (int i = 0; i < typeIds.length - 1; i++) {
-                sql += " ps.typeId = " + typeIds[i] + " OR ";
+                sql += " p.typeId = " + typeIds[i] + " OR ";
             }
-            sql += " ps.typeId = " + typeIds[typeIds.length - 1] + " ) ";
+            sql += " p.typeId = " + typeIds[typeIds.length - 1] + " ) ";
         }
         sql += " Order BY p.productId\n"
                 + "OFFSET ? ROWS \n"
                 + "FETCH NEXT ? ROWS ONLY";
-
+        System.out.println(sql);
         try ( Connection connection = SQLServerConnection.getConnection();  PreparedStatement ps = connection.prepareStatement(sql);) {
             ps.setObject(1, categoryId);
             ps.setObject(2, priceFrom);
@@ -236,14 +236,13 @@ public class ProductDAO {
                 + "     p.typeId,\n"
                 + "     p.quantity\n"
                 + "from product p \n"
-                + "	JOIN ProductSize ps ON p.productId = ps.productId"
                 + " Where categoryId = ? and p.productPrice between ? and ? ";
         if (typeIds != null) {
             sql += " AND (";
             for (int i = 0; i < typeIds.length - 1; i++) {
-                sql += " ps.typeId = " + typeIds[i] + " OR ";
+                sql += " p.typeId = " + typeIds[i] + " OR ";
             }
-            sql += " ps.typeId = " + typeIds[typeIds.length - 1] + " ) ";
+            sql += " p.typeId = " + typeIds[typeIds.length - 1] + " ) ";
         }
         sql += ") as a";
 
@@ -409,6 +408,6 @@ public class ProductDAO {
 
     public static void main(String[] args) {
         String[] i = {"1", "2"};
-        System.out.println(new ProductDAO().getListProductPerPage(4, 1, i, "0", "1000000000"));
+        System.out.println(new ProductDAO().getListProductPerPageByCategoryId(9,4, 1, i, "0", "1000000000"));
     }
 }

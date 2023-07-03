@@ -22,18 +22,18 @@
                 ${requestScope.msg}
             </div>
             <label for="username">Username</label>
-            <input type="email" placeholder="Email" id="username" required="">
+            <input type="email" placeholder="Email" name="username" required="">
 
             <label for="password">Password</label>
-            <input type="password" placeholder="Password" id="password" required="">
+            <input type="password" placeholder="Password" name="password" required="">
 
-            <button>SIGN IN</button>
+            <button type="submit">SIGN IN</button>
             <div class="social">
                 <div class="go"><i class="fab fa-google"></i> Google</div>
                 <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>
             </div>
             <!-- <div class="form-check form-switch d-flex align-items-center mb-3"> -->
-            <input class=" btn-check" name="isRemeberMe" type="checkbox" id="rememberMe" checked>
+            <input class=" btn-check" name="isRemeberMe" type="checkbox" id="rememberMe" style="transform: scale(0.5);" checked>
             <label class="form-check-label" for="rememberMe">Remember me</label>
         </div>
     </form>

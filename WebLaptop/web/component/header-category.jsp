@@ -1,5 +1,5 @@
 <div class="container-fluid bg-dark mb-30">
-    <div class="row px-xl-5">
+    <div class="row px-xl-5 header">
         <div class="col-lg-3 d-none d-lg-block">
             <a class="btn d-flex align-items-center justify-content-between bg-primary w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; padding: 0 30px;">
                 <h5 class="text-dark m-0"><i class="fa fa-bars mr-2"></i>Brands</h5>
