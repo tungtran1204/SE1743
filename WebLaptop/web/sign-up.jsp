@@ -23,8 +23,8 @@
             </div>
             <button type="submit">Continue</button>
             <div class="social">
-                <div class="go"><i class="fab fa-google"></i> Google</div>
-                <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>
+                <a href="sign-in"><i class="fab fa-google" style="margin: 20px; text-decoration: none" ></i> Sign In</a>
+                <a href="http://localhost:9999/WebLaptop/"><i class="fab fa-facebook" style="margin: 50px; text-decoration: none" ></i> Home</a>
             </div>
         </form>
     </body>

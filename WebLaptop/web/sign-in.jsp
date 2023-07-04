@@ -14,6 +14,9 @@
             width: 50%;
             margin: auto;
         }
+        .fab {
+            text-decoration: none;
+        }
     </style>
     <body>
         <form action="sign-in" method="post">
@@ -29,12 +32,14 @@
 
             <button type="submit">SIGN IN</button>
             <div class="social">
-                <div class="go"><i class="fab fa-google"></i> Google</div>
-                <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>
+                <a href="sign-up"><i class="fab fa-google" style="margin: 20px; text-decoration: none"></i> Sign Up</a>
+                <a href="http://localhost:9999/WebLaptop/"><i class="fab" style="margin: 50px; text-decoration: none"></i> Home</a>
             </div>
             <!-- <div class="form-check form-switch d-flex align-items-center mb-3"> -->
-            <input class=" btn-check" name="isRemeberMe" type="checkbox" id="rememberMe" style="transform: scale(0.5);" checked>
-            <label class="form-check-label" for="rememberMe">Remember me</label>
+            <div style="display: flex; align-items: center;">
+            <input class=" btn-check" name="isRemeberMe" type="checkbox" id="rememberMe" style="transform: scale(0.5);margin: 0px;" checked>
+            <label class="form-check-label" for="rememberMe" style="font-weight: normal; align-items: center">Remember me</label>
+            </div>
         </div>
     </form>
 </body>
