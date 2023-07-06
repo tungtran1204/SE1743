@@ -35,9 +35,9 @@
                 -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
             }
-            .header {
+/*            .header {
                 background-color: black;
-            }
+            }*/
         </style>
     </head>
 

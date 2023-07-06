@@ -32,8 +32,8 @@
 
             <button type="submit">SIGN IN</button>
             <div class="social">
-                <a href="sign-up"><i class="fab fa-google" style="margin: 20px; text-decoration: none"></i> Sign Up</a>
-                <a href="http://localhost:9999/WebLaptop/"><i class="fab" style="margin: 50px; text-decoration: none"></i> Home</a>
+                <a href="sign-up"><i class="text-decoration-none" style="margin: 20px; text-decoration: none"></i> Sign Up</a>
+                <a href="http://localhost:9999/WebLaptop/"><i class="text-decoration-none" style="margin: 50px; text-decoration: none"></i> Home</a>
             </div>
             <!-- <div class="form-check form-switch d-flex align-items-center mb-3"> -->
             <div style="display: flex; align-items: center;">
