@@ -87,7 +87,6 @@ public class ShopController extends HttpServlet {
 
         if (categoryId != 0) {
             lstProduct = productDAO.getListProductPerPageByCategoryId(numberProductPerPage, pageCur, categoryId, typeIds, priceFrom, priceTo);
-            //href = "shop?categoryId=" + categoryId + "&";
             href = priceFrom.equals("0") ? "shop?categoryId=" + categoryId + "&" : "shop?categoryId=" + categoryId +"&priceFrom=" + priceFrom + "&priceTo=" + priceTo + "&";
             size = productDAO.sizeByCategory(categoryId, typeIds, priceFrom, priceTo);
             if (typeIds != null) {

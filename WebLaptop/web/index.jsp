@@ -2,7 +2,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html style="scroll-behavior: smooth;" lang="en">
 
     <head>
         <meta charset="utf-8">
@@ -34,12 +34,11 @@
                 -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
             }
-            .icon-brands {
-/*                display: flex
-                justify-content: center;
-                align-items: center;*/
+            .scroll-container {
+                
+                overflow-y: scroll;
+                scroll-behavior: smooth;
             }
-            
         </style>
     </head>
 
@@ -60,59 +59,59 @@
                 <div class="col-lg-8">
                     <div id="header-carousel" class="carousel slide carousel-fade mb-30 mb-lg-0" data-ride="carousel">
                         <ol class="carousel-indicators">
-<!--                            <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#header-carousel" data-slide-to="1"></li>
-                            <li data-target="#header-carousel" data-slide-to="2"></li>-->
+                            <!--                            <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
+                                                        <li data-target="#header-carousel" data-slide-to="1"></li>
+                                                        <li data-target="#header-carousel" data-slide-to="2"></li>-->
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item position-relative active" style="height: 430px;">
                                 <img class="position-absolute w-100 h-100" src="assets/img/wkNecKqj64E24FugVwnQzd-1200-80.jpg" style="object-fit: cover;">
                                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                     <div class="p-3" style="max-width: 700px;">
-                                        <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Men Fashion</h1>
-                                        <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
-                                        <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                                        <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Laptop</h1>
+                                        <p class="mx-md-5 px-5 animate__animated animate__bounceIn"></p>
+                                        <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="shop">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
-<!--                            <div class="carousel-item position-relative" style="height: 430px;">
-                                <img class="position-absolute w-100 h-100" src="assets/img/carousel-2.jpg" style="object-fit: cover;">
-                                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                    <div class="p-3" style="max-width: 700px;">
-                                        <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Women Fashion</h1>
-                                        <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
-                                        <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item position-relative" style="height: 430px;">
-                                <img class="position-absolute w-100 h-100" src="assets/img/carousel-3.jpg" style="object-fit: cover;">
-                                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                    <div class="p-3" style="max-width: 700px;">
-                                        <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Kids Fashion</h1>
-                                        <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
-                                        <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
-                                    </div>
-                                </div>
-                            </div>-->
+                            <!--                            <div class="carousel-item position-relative" style="height: 430px;">
+                                                            <img class="position-absolute w-100 h-100" src="assets/img/carousel-2.jpg" style="object-fit: cover;">
+                                                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                                                <div class="p-3" style="max-width: 700px;">
+                                                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Women Fashion</h1>
+                                                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
+                                                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="carousel-item position-relative" style="height: 430px;">
+                                                            <img class="position-absolute w-100 h-100" src="assets/img/carousel-3.jpg" style="object-fit: cover;">
+                                                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                                                <div class="p-3" style="max-width: 700px;">
+                                                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Kids Fashion</h1>
+                                                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
+                                                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>-->
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="product-offer mb-30" style="height: 200px;">
-                        <img class="img-fluid" src="assets/img/offer-1.jpg" alt="">
+                        <img class="img-fluid" src="assets/img/221110144914-best-laptops-2022-lead-image-cnnu.jpg" alt="">
                         <div class="offer-text">
-                            <h6 class="text-white text-uppercase">Save 20%</h6>
-                            <h3 class="text-white mb-3">Special Offer</h3>
-                            <a href="" class="btn btn-primary">Shop Now</a>
+                            <h6 class="text-white text-uppercase">Hot</h6>
+                            <h3 class="text-white mb-3">Featured Products</h3>
+                            <a href="#page-1" class="btn btn-primary">Shop Now</a>
                         </div>
                     </div>
                     <div class="product-offer mb-30" style="height: 200px;">
-                        <img class="img-fluid" src="assets/img/offer-2.jpg" alt="">
+                        <img class="img-fluid" src="assets/img/dims.webp" alt="">
                         <div class="offer-text">
-                            <h6 class="text-white text-uppercase">Save 20%</h6>
-                            <h3 class="text-white mb-3">Special Offer</h3>
-                            <a href="" class="btn btn-primary">Shop Now</a>
+                            <h6 class="text-white text-uppercase">New</h6>
+                            <h3 class="text-white mb-3">Recent Products</h3>
+                            <a href="#page-2" class="btn btn-primary">Shop Now</a>
                         </div>
                     </div>
                 </div>
@@ -126,26 +125,26 @@
             <div class="row px-xl-5 pb-3">
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
-                        <img src="assets/img/service_img1.webp"/>
-                        <h5 class="font-weight-semi-bold m-0">Quality Product</h5>
+                        <img src="assets/img/service_img1.webp" style="max-width: 50px; max-height: 50px; margin-right: 20px"/>
+                        <h5 class="font-weight-semi-bold m-0">Laptop Repair</h5>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
-                        <img src="assets/img/service_img2.webp"/>
-                        <h5 class="font-weight-semi-bold m-0">Free Shipping</h5>
+                        <img src="assets/img/service_img2.webp" style="max-width: 50px; max-height: 50px; margin-right: 20px"/>
+                        <h5 class="font-weight-semi-bold m-0">Laptop Cleaning</h5>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
-                        <img src="assets/img/service_img3.webp"/>
-                        <h5 class="font-weight-semi-bold m-0">14-Day Return</h5>
+                        <img src="assets/img/service_img3.webp" style="max-width: 50px; max-height: 50px; margin-right: 20px"/>
+                        <h5 class="font-weight-semi-bold m-0">Laptop Upgrade</h5>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
-                        <img src="assets/img/service_img4.webp"/>
-                        <h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
+                        <img src="assets/img/service_img4.webp" style="max-width: 50px; max-height: 50px; margin-right: 20px"/>
+                        <h5 class="font-weight-semi-bold m-0">Order Laptop</h5>
                     </div>
                 </div>
             </div>
@@ -155,7 +154,7 @@
 
         <!-- Categories Start -->
         <div class="container-fluid pt-5">
-            <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Categories</span></h2>
+            <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Brands</span></h2>
             <div class="row px-xl-5 pb-3">
                 <c:forEach items="${requestScope.lstCategory}" var="c">
                     <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
@@ -178,100 +177,103 @@
 
 
         <!-- Products Start -->
-        <div class="container-fluid pt-5 pb-3">
-            <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Featured Products</span></h2>
-            <div class="row px-xl-5">
-                <c:forEach items="${requestScope.lstProductFeatured}" var="p">
-                    <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                        <div class="product-item bg-light mb-4">
-                            <div class="product-img position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="${p.productImg}" alt="">
-                                <div class="product-action">
+        <div class="scroll-container">
+            <div class="container-fluid pt-5 pb-3" id="page-1">
+                <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Featured Products</span></h2>
+                <div class="row px-xl-5" >
+                    <c:forEach items="${requestScope.lstProductFeatured}" var="p">
+                        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                            <div class="product-item bg-light mb-4">
+                                <div class="product-img position-relative overflow-hidden">
+                                    <img class="img-fluid w-100" src="${p.productImg}" alt="">
+                                    
+                                    <div class="product-action">
+                                    </div>
+                                </div>
+                                <div class="text-center py-4">
+                                    <a class="h6 text-decoration-none product-name" href="product-detail?productId=${p.productId}">${p.productName}</a>
+                                    <div class="d-flex align-items-center justify-content-center mt-2">
+                                        <fmt:formatNumber value="${p.productPrice}" pattern="#,###" var="formattedPrice" />
+                                        <h5>${formattedPrice} ₫</h5>
+                                        <!--<h6 class="text-muted ml-2"><del>$123.00</del></h6>-->
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center mb-1">
+                                        <small class="fa fa-star text-primary mr-1"></small>
+                                        <small class="fa fa-star text-primary mr-1"></small>
+                                        <small class="fa fa-star text-primary mr-1"></small>
+                                        <small class="fa fa-star text-primary mr-1"></small>
+                                        <small class="fa fa-star text-primary mr-1"></small>
+                                        <small>(99)</small>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="text-center py-4">
-                                <a class="h6 text-decoration-none product-name" href="product-detail?productId=${p.productId}">${p.productName}</a>
-                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                    <fmt:formatNumber value="${p.productPrice}" pattern="#,###" var="formattedPrice" />
-                                    <h5>${formattedPrice} ₫</h5>
-                                    <!--<h6 class="text-muted ml-2"><del>$123.00</del></h6>-->
-                                </div>
-                                <div class="d-flex align-items-center justify-content-center mb-1">
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small>(99)</small>
-                                </div>
-                            </div>
                         </div>
-                    </div>
-                </c:forEach>
-            </div>
-        </div>
-        <!-- Products End -->
-
-
-        <!-- Offer Start -->
-        <div class="container-fluid pt-5 pb-3">
-            <div class="row px-xl-5">
-                <div class="col-md-6">
-                    <div class="product-offer mb-30" style="height: 300px;">
-                        <img class="img-fluid" src="assets/img/offer-1.jpg" alt="">
-                        <div class="offer-text">
-                            <h6 class="text-white text-uppercase">Save 20%</h6>
-                            <h3 class="text-white mb-3">Special Offer</h3>
-                            <a href="" class="btn btn-primary">Shop Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="product-offer mb-30" style="height: 300px;">
-                        <img class="img-fluid" src="assets/img/offer-2.jpg" alt="">
-                        <div class="offer-text">
-                            <h6 class="text-white text-uppercase">Save 20%</h6>
-                            <h3 class="text-white mb-3">Special Offer</h3>
-                            <a href="" class="btn btn-primary">Shop Now</a>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
-        </div>
-        <!-- Offer End -->
+            <!-- Products End -->
 
 
-        <!-- Products Start -->
-        <div class="container-fluid pt-5 pb-3">
-            <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Recent Products</span></h2>
-            <div class="row px-xl-5">
-                <c:forEach items="${requestScope.lstProductRecent}" var="p">
-                    <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                        <div class="product-item bg-light mb-4">
-                            <div class="product-img position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="${p.productImg}" alt="">
-                                <div class="product-action">
+            <!--             Offer Start 
+                        <div class="container-fluid pt-5 pb-3">
+                            <div class="row px-xl-5">
+                                <div class="col-md-6">
+                                    <div class="product-offer mb-30" style="height: 300px;">
+                                        <img class="img-fluid" src="assets/img/offer-1.jpg" alt="">
+                                        <div class="offer-text">
+                                            <h6 class="text-white text-uppercase">Save 20%</h6>
+                                            <h3 class="text-white mb-3">Special Offer</h3>
+                                            <a href="" class="btn btn-primary">Shop Now</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="text-center py-4">
-                                <a class="h6 text-decoration-none product-name" href="product-detail?productId=${p.productId}">${p.productName}</a>
-                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                    <fmt:formatNumber value="${p.productPrice}" pattern="#,###" var="formattedPrice" />
-                                    <h5>${formattedPrice} ₫</h5>
-                                    <!--<h6 class="text-muted ml-2"><del>$123.00</del></h6>-->
-                                </div>
-                                <div class="d-flex align-items-center justify-content-center mb-1">
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small>(99)</small>
+                                <div class="col-md-6">
+                                    <div class="product-offer mb-30" style="height: 300px;">
+                                        <img class="img-fluid" src="assets/img/offer-2.jpg" alt="">
+                                        <div class="offer-text">
+                                            <h6 class="text-white text-uppercase">Save 20%</h6>
+                                            <h3 class="text-white mb-3">Special Offer</h3>
+                                            <a href="" class="btn btn-primary">Shop Now</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </c:forEach>
+                         Offer End -->
+
+
+            <!-- Products Start -->
+            <div class="container-fluid pt-5 pb-3" id="page-2">
+                <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Recent Products</span></h2>
+                <div class="row px-xl-5">
+                    <c:forEach items="${requestScope.lstProductRecent}" var="p">
+                        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                            <div class="product-item bg-light mb-4">
+                                <div class="product-img position-relative overflow-hidden">
+                                    <img class="img-fluid w-100" src="${p.productImg}" alt="">
+                                    <div class="product-action">
+                                    </div>
+                                </div>
+                                <div class="text-center py-4">
+                                    <a class="h6 text-decoration-none product-name" href="product-detail?productId=${p.productId}">${p.productName}</a>
+                                    <div class="d-flex align-items-center justify-content-center mt-2">
+                                        <fmt:formatNumber value="${p.productPrice}" pattern="#,###" var="formattedPrice" />
+                                        <h5>${formattedPrice} ₫</h5>
+                                        <!--<h6 class="text-muted ml-2"><del>$123.00</del></h6>-->
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center mb-1">
+                                        <small class="fa fa-star text-primary mr-1"></small>
+                                        <small class="fa fa-star text-primary mr-1"></small>
+                                        <small class="fa fa-star text-primary mr-1"></small>
+                                        <small class="fa fa-star text-primary mr-1"></small>
+                                        <small class="fa fa-star text-primary mr-1"></small>
+                                        <small>(99)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
             </div>
         </div>
         <!-- Products End -->
@@ -283,25 +285,25 @@
 
         <!-- Footer Start -->
         <%@include file="component/footer.jsp" %>
-    <!-- Footer End -->
+        <!-- Footer End -->
 
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/lib/easing/easing.min.js"></script>
-    <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script>
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/lib/easing/easing.min.js"></script>
+        <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script>
 
-    <!-- Contact Javascript File -->
-    <script src="assets/mail/jqBootstrapValidation.min.js"></script>
-    <script src="assets/mail/contact.js"></script>
+        <!-- Contact Javascript File -->
+        <script src="assets/mail/jqBootstrapValidation.min.js"></script>
+        <script src="assets/mail/contact.js"></script>
 
-    <!-- Template Javascript -->
-    <script src="assets/js/main.js"></script>
-</body>
+        <!-- Template Javascript -->
+        <script src="assets/js/main.js"></script>
+    </body>
 
 </html>

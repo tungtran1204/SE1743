@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" href="assets/img/logo1.png" type="image/x-icon" />
-        <title>LaptopModal</title>
+        <title>LaptopHub</title>
 
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -36,20 +36,12 @@
     </head>
 
     <body>
-        <%@include file="component/header-shop.jsp" %>
+       
         <!-- Topbar End -->
         <div class="container emp-profile">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="profile-img">
-                        <img src="assets/img/bg-smart-home-2.jpg" alt="" />
-                        <div class="file btn btn-lg btn-primary">
-                            Change Photo
-                            <input type="file" name="file" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row col-md-9">
+                
+                <div class="row col-md-12">
                     <div class="col-md-9">
                         <div class="profile-head">
                             <h5>${sessionScope.accountDetail.accountDetailName}</h5>
@@ -126,9 +118,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
-                </div>
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <div class="tab-content profile-tab" id="myTabContent">
                         <!----------------Start About------------->
                         <%@include file="tab/profile/tab-about.jsp" %>

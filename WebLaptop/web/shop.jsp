@@ -35,9 +35,9 @@
                 -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
             }
-/*            .header {
-                background-color: black;
-            }*/
+            /*            .header {
+                            background-color: black;
+                        }*/
         </style>
     </head>
 
@@ -57,9 +57,8 @@
             <div class="row px-xl-5">
                 <div class="col-12">
                     <nav class="breadcrumb bg-light mb-30">
-                        <a class="breadcrumb-item text-dark" href="/PRJSHOPASM">Home</a>
-                        <a class="breadcrumb-item text-dark" href="#">Shop</a>
-                        <span class="breadcrumb-item active">Shop List</span>
+                        <a class="breadcrumb-item text-dark" href="/WebLaptop">Home</a>
+                        <a class="breadcrumb-item text-dark" href="shop">Shop</a>
                     </nav>
                 </div>
             </div>
@@ -107,7 +106,7 @@
                         <div class="bg-light p-4 mb-30">
                             <c:forEach items="${requestScope.lstType}" var="s">
                                 <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                    <input name="typeId" value="${s.typeId}" type="checkbox" class="custom-control-input" id="type-${s.typeId}">
+                                    <input <c:if test="${Helper.contains(requestScope.typeIds, s.typeId)}"> checked=""</c:if> name="typeId" value="${s.typeId}" type="checkbox" class="custom-control-input" id="type-${s.typeId}">
                                     <label class="custom-control-label" for="type-${s.typeId}">${s.typeValue}</label>
                                 </div>
                             </c:forEach>
@@ -125,14 +124,22 @@
                         <div class="col-12 pb-1">
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <div class="">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Sorting</button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#">Latest</a>
-                                            <a class="dropdown-item" href="#">Popularity</a>
-                                            <a class="dropdown-item" href="#">Best Rating</a>
-                                        </div>
-                                    </div>
+                                    <form action="sort" method="get" class="input">
+                                        <label for="sortBy"></label>
+                                        <select name="sortBy" id="sortBy" onchange="this.form.submit()">
+                                            <option value="none">Order by</option>
+                                            <option value="price ASC">Price ASC</option>
+                                            <option value="price DESC">Price DESC</option>
+                                        </select>
+                                    </form>
+                                    <!--                                    <div class="btn-group">
+                                                                            <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Sorting</button>
+                                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                                
+                                                                                <a class="dropdown-item" href="#">Ascending by price</a>
+                                                                                <a class="dropdown-item" href="#">Descending by price</a>
+                                                                            </div>
+                                                                        </div>-->
                                 </div>
                             </div>
                         </div>
@@ -147,7 +154,7 @@
                                         </a>
                                     </div>
                                     <div class="text-center py-4">
-                                        <a class="h6 text-decoration-none product-name" href="">${p.productName}</a>
+                                        <a class="h6 text-decoration-none product-name" href="product-detail?productId=${p.productId}">${p.productName}</a>
                                         <div class="d-flex align-items-center justify-content-center mt-2">
                                             <fmt:formatNumber value="${p.productPrice}" pattern="#,###" var="formattedPrice" />
                                             <h5>${formattedPrice} ₫</h5>
@@ -207,37 +214,37 @@
         <!-- Template Javascript -->
         <script src="assets/js/main.js"></script>
 
-        <!--QUOCPQ-->
-        <script>
-            $(document).ready(function () {
-                $('.noUi-handle').on('click', function () {
-                    $(this).width(50);
-                });
-                var rangeSlider = document.getElementById('slider-range');
-                var moneyFormat = wNumb({
-                    decimals: 0,
-                    thousand: ','
-//    prefix: '$'
-                });
-                noUiSlider.create(rangeSlider, {
-                    start: [${requestScope.priceFrom}, ${requestScope.priceTo}],
-                    step: 10000,
-                    range: {
-                        'min': [10000000],
-                        'max': [200000000]
-                    },
-                    format: moneyFormat,
-                    connect: true
-                });
 
-                // Set visual min and max values and also update value hidden form inputs
-                rangeSlider.noUiSlider.on('update', function (values, handle) {
-                    document.getElementById('slider-range-value1').innerHTML = values[0];
-                    document.getElementById('slider-range-value2').innerHTML = values[1];
-                    document.getElementById('priceFrom').value = moneyFormat.from(values[0]);
-                    document.getElementById('priceTo').value = moneyFormat.from(values[1]);
-                });
-            });
+        <script>
+                                            $(document).ready(function () {
+                                                $('.noUi-handle').on('click', function () {
+                                                    $(this).width(50);
+                                                });
+                                                var rangeSlider = document.getElementById('slider-range');
+                                                var moneyFormat = wNumb({
+                                                    decimals: 0,
+                                                    thousand: ','
+//    prefix: '$'
+                                                });
+                                                noUiSlider.create(rangeSlider, {
+                                                    start: [${requestScope.priceFrom}, ${requestScope.priceTo}],
+                                                    step: 200000,
+                                                    range: {
+                                                        'min': [10000000],
+                                                        'max': [200000000]
+                                                    },
+                                                    format: moneyFormat,
+                                                    connect: true
+                                                });
+
+                                                // Set visual min and max values and also update value hidden form inputs
+                                                rangeSlider.noUiSlider.on('update', function (values, handle) {
+                                                    document.getElementById('slider-range-value1').innerHTML = values[0];
+                                                    document.getElementById('slider-range-value2').innerHTML = values[1];
+                                                    document.getElementById('priceFrom').value = moneyFormat.from(values[0]);
+                                                    document.getElementById('priceTo').value = moneyFormat.from(values[1]);
+                                                });
+                                            });
         </script>
         <script src="assets/js/price.js"></script>
     </body>
