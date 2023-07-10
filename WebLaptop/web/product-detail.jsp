@@ -102,7 +102,9 @@
                                                     </ul>
                                                 </div>-->
                         <div class="d-flex mb-3">
-                            <strong class="text-dark mr-3">Sizes:</strong>
+                            <p class="mb-4">${requestScope.product.productDescription}
+                        </p>
+                            <!--<strong class="text-dark mr-3">Sizes:</strong>-->
                             <form>
                                 <c:forEach items="${requestScope.lstProductSize}" var="s" varStatus="i">
                                     <div class="custom-control custom-radio custom-control-inline">

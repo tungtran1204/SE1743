@@ -124,7 +124,7 @@
                         <div class="col-12 pb-1">
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <div class="">
-                                    <form action="sort" method="get" class="input">
+                                    <form action="shop" method="get" class="input">
                                         <label for="sortBy"></label>
                                         <select name="sortBy" id="sortBy" onchange="this.form.submit()">
                                             <option value="none">Order by</option>
