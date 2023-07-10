@@ -22,8 +22,8 @@
 
             <button type="submit">SIGN UP</button>
             <div class="social">
-                <div class="go"><i class="fab fa-google"></i> Google</div>
-                <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>
+                <a href="sign-in" style="margin-left: 50px; text-decoration: none" > Sign In</a>
+                <a href="/WebLaptop" style="margin-left: 120px; text-decoration: none" > Home</a>
             </div>
 
         </form>

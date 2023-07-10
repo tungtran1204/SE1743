@@ -21,8 +21,8 @@
             </div>
             <button type="submit">Continue</button>
             <div class="social">
-                <div class="go"><i class="fab fa-google"></i> Google</div>
-                <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>
+                <a href="sign-up" style="margin-left: 30px; text-decoration: none" ><i class="fab fa-google" ></i> Try another email</a>
+                <a href="/WebLaptop" style="margin-left: 70px; text-decoration: none" ><i class="fab fa-facebook" ></i> Home</a>
             </div>
         </form>
     </body>
