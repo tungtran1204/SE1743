@@ -6,7 +6,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>MultiShop - Online Shop Website Template</title>
+        <title>LaptopHub - Best Laptop</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Free HTML Templates" name="keywords">
         <meta content="Free HTML Templates" name="description">
@@ -28,6 +28,14 @@
         <!-- Customized Bootstrap Stylesheet -->
         <link href="assets/css/style.css" rel="stylesheet">
     </head>
+    <style>
+        pre{
+            font-family: "Roboto", sans-serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #6C757D;
+        }
+    </style>
 
     <body>
         <!-- Topbar Start -->
@@ -45,8 +53,8 @@
             <div class="row px-xl-5">
                 <div class="col-12">
                     <nav class="breadcrumb bg-light mb-30">
-                        <a class="breadcrumb-item text-dark" href="#">Home</a>
-                        <a class="breadcrumb-item text-dark" href="#">Shop</a>
+                        <a class="breadcrumb-item text-dark" href="/WebLaptop">Home</a>
+                        <a class="breadcrumb-item text-dark" href="shop">Shop</a>
                         <span class="breadcrumb-item active">Shop Detail</span>
                     </nav>
                 </div>
@@ -91,54 +99,11 @@
                         </div>
                         <fmt:formatNumber value="${requestScope.product.productPrice}" pattern="#,###" var="formattedPrice" />
                         <h3 class="font-weight-semi-bold mb-4">${formattedPrice} ₫</h3>
-                        <!--                        <div class="description">
-                                                    <p class="mb-4">Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit
-                                                        clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no sea
-                                                        Nonumy</p>
-                                                    <ul>
-                                                        <li>Lorem Des</li>
-                                                        <li>Lorem Des</li>
-                                                        <li>Lorem Des</li>
-                                                    </ul>
-                                                </div>-->
+
                         <div class="d-flex mb-3">
-                            <p class="mb-4">${requestScope.product.productDescription}
-                        </p>
-                            <!--<strong class="text-dark mr-3">Sizes:</strong>-->
-                            <form>
-                                <c:forEach items="${requestScope.lstProductSize}" var="s" varStatus="i">
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input <c:if test="${i.count eq 1}">checked=""</c:if> type="radio" class="custom-control-input" id="size-${s.productSizeId}" name="size">
-                                        <label class="custom-control-label" for="size-${s.productSizeId}">${s.size.sizeValue}</label>
-                                    </div>
-                                </c:forEach>
-                            </form>
+                            <p class="mb-4" style="white-space: pre;"><pre>${requestScope.product.productDescription}</pre></p>
                         </div>
-                        <!-- <div class="d-flex mb-4">
-                            <strong class="text-dark mr-3">Colors:</strong>
-                            <form>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" class="custom-control-input" id="color-1" name="color">
-                                    <label class="custom-control-label" for="color-1">Black</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" class="custom-control-input" id="color-2" name="color">
-                                    <label class="custom-control-label" for="color-2">White</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" class="custom-control-input" id="color-3" name="color">
-                                    <label class="custom-control-label" for="color-3">Red</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" class="custom-control-input" id="color-4" name="color">
-                                    <label class="custom-control-label" for="color-4">Blue</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" class="custom-control-input" id="color-5" name="color">
-                                    <label class="custom-control-label" for="color-5">Green</label>
-                                </div>
-                            </form>
-                        </div> -->
+                        
                         <div class=" align-items-center mb-4 pt-2">
                             <div class="d-flex">
                                 <div class="input-group quantity mr-3 mb-3" style="width: 130px;">
@@ -154,32 +119,16 @@
                                         </button>
                                     </div>
                                 </div>
-                               
+
                             </div>
                             <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
                                 Cart</button>
                         </div>
-                        <!-- <div class="d-flex pt-2">
-                            <strong class="text-dark mr-2">Share on:</strong>
-                            <div class="d-inline-flex">
-                                <a class="text-dark px-2" href="">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a class="text-dark px-2" href="">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a class="text-dark px-2" href="">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                                <a class="text-dark px-2" href="">
-                                    <i class="fab fa-pinterest"></i>
-                                </a>
-                            </div>
-                        </div> -->
+                        
                     </div>
                 </div>
             </div>
-            <div class="row px-xl-5">
+<!--            <div class="row px-xl-5">
                 <div class="col">
                     <div class="bg-light p-30">
                         <div class="nav nav-tabs mb-4">
@@ -305,7 +254,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
         <!-- Shop Detail End -->
 
@@ -324,7 +273,8 @@
                                 <div class="text-center py-4">
                                     <a class="h6 text-decoration-none" href="product-detail?productId=${p.productId}">${p.productName}</a>
                                     <div class="d-flex align-items-center justify-content-center mt-2">
-                                        <h5>${p.productPrice}</h5>
+                                        <fmt:formatNumber value="${p.productPrice}" pattern="#,###" var="formattedPrice" />
+                                        <h5>${formattedPrice} ₫</h5>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center mb-1">
                                         <small class="fa fa-star text-primary mr-1"></small>
