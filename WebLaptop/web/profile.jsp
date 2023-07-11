@@ -30,16 +30,23 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
             />
+        <link 
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+            />
         <!--css file-->
         <link rel="stylesheet" href="assets/css/profile.css" />
         <link href="assets/css/style.css" rel="stylesheet" />
     </head>
-
+    <style>
+        body{       
+            background: url(../img/background-xam-dep-sang-tao-va-an-tuong-nhat.jpg);
+        } 
+    </style>
     <body>
 
         <!-- Topbar End -->
         <div class="container emp-profile">
-
             <div class="row">
                 <div class="col-9">
                     <div class="profile-head">
@@ -128,7 +135,10 @@
                     </div>
                 </div>
             </div>
+            <A HREF="javascript:javascript:history.go(-1)"><i class="fa-sharp fa-solid fa-circle-arrow-left fa-xl" style="margin-left: 50px; font-size: 250%; margin-top:50px"></i></A>            
+            <a href="/WebLaptop"><i class="fa-solid fa-house fa-xl" style="margin-left: 50px; font-size: 250%;"></i></a>   
         </div>
+                        
 
         <!------------------------MODAL CHANGE PASSWORD-------------------------->
         <%@include file="modal/profile/modal-change-password.jsp" %>

@@ -18,18 +18,11 @@
         <tbody>
             <tr>
                 <td>1</td>
-                <td>Quoc Phung</tda>
-                <td>0911092003</td>
-                <td>2023-05-24</td>
-                <td>2023-05-26</td>
+                <td>Tung</tda>
+                <td>0367767778</td>
+                <td>2023-07-01</td>
+                <td>2023</td>
                 <td><i class="fa-solid fa-eye"></i></td>
-            </tr>
-            <tr>
-                <td scope="row">ádasd</td>
-                <td>ádasd</tda>
-                <td>ádasd</td>
-                <td>ádasd</td>
-                <td>ádasd</td>
             </tr>
         </tbody>
     </table>

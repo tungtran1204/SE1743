@@ -1,6 +1,6 @@
-<div id="modal-order-detail" class="modal fade" role="dialog">
+<!--<div id="modal-order-detail" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg modal-dialog-scrollable" U>
-        <!-- Modal content-->
+         Modal content
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Order Detail</h4>
@@ -102,4 +102,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
