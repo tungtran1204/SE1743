@@ -7,7 +7,7 @@
                 <span class="h1 text-uppercase text-primary bg-dark px-2">Laptop</span>
                 <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Hub</span>
             </a>
-            <p class="footer" style="margin-top: 20px; margin-left: 9px; font-size: 87%">LaptopHub cam kết nỗ lực hết mình nhằm cung cấp sản phẩm và dịch vụ đúng với những giá trị mà khách hàng mong đợi.</p>
+            <p class="footer" style="margin-top: 20px; margin-left: 9px; font-size: 87%">LaptopHub is committed to putting forth our utmost effort to provide products and services that align with the values our customers expect.</p>
             <p class="mb-2" style="margin-left: 9px;"><i class="fa fa-map-marker-alt text-primary mr-3"></i> Ninh Bình City</p>
                 <p class="mb-2" style="margin-left: 9px;"><i class="fa fa-envelope text-primary mr-3"></i>tungtran120403@gmail.com</p>
                 <p class="mb-0" style="margin-left: 9px;"><i class="fa fa-phone-alt text-primary mr-3"></i>0966622626</p>

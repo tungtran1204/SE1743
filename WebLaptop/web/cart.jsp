@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,9 +65,8 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>Products</th>
-                                        <th>Unit Price</th>
+                                        <th style="width: 130px;">Unit Price</th>
                                         <th>Quantity</th>
-                                        <th>Size</th>
                                         <th>Remove</th>
                                     </tr>
                                 </thead>
@@ -75,13 +75,14 @@
                                         <tr>
                                             <td class="align-middle"> <a class="d-flex" style="text-decoration: none; color: black; line-height: 1.6;" href="product-detail?productId=${c.productId}">
                                                     <img src="${c.orderDetailProductImg}" alt="" style="width: 50px;"><div style="margin-left: 7px; text-align: left !important;">${c.orderDetailProductName}</div></a></td>
-                                            <td class="align-middle">${c.orderDetailPriceProduct}VND</td>
+
+
+                                            <td class="align-middle"><fmt:formatNumber value="${c.orderDetailPriceProduct}" pattern="#,###" var="formattedPrice" />${formattedPrice} ₫</td>
                                             <td class="align-middle">
                                                 <div class="input-group quantity mx-auto" style="width: 50px;">
                                                     <input type="number" name="orderDetailQuantity" class="form-control form-control-sm bg-secondary border-0" value="${c.orderDetailQuantity}">
                                                 </div>
                                             </td>
-                                            <td class="align-middle">${c.orderDetailSizeValue}</td>
                                             <td class="align-middle">
                                                 <a><button type="button" class="btn btn-sm btn-danger"> <i class="fa fa-times"></i></button></a>
                                             </td>
@@ -93,7 +94,7 @@
                             <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Update</button>
                         </c:if>
                         <c:if test="${sessionScope.lstCart.size() eq 0}">
-                            <h3>NO PRODUCT. LET SHOPPING</h3>
+                            <h3 style="margin-bottom: 137px">There are no products in the cart</h3>
                         </c:if>
                     </form>
                 </div>
@@ -104,7 +105,7 @@
                             <div class="pt-2">
                                 <div class="d-flex justify-content-between mt-2">
                                     <h5>Total</h5>
-                                    <h5 id="total-money">${requestScope.totalPrice} VND</h5>
+                                    <h5 id="total-money"><fmt:formatNumber value="${requestScope.totalPrice}" pattern="#,###" var="formattedPrice" />${formattedPrice} ₫</h5>
                                 </div>
 
                                 <a href="checkout"><button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button></a>

@@ -162,7 +162,7 @@
             <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Brands</span></h2>
             <div class="row px-xl-5 pb-3">
                 <c:forEach items="${requestScope.lstCategory}" var="c">
-                    <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                    <div class="col-lg-3 col-md-4 col-sm-6 pb-1" >
                         <a class="text-decoration-none" href="shop?categoryId=${c.categoryId}">
                             <div class="cat-item d-flex align-items-center mb-4">
                                 <div class="overflow-hidden" style="width: 100px; height: 100px;">

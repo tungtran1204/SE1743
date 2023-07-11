@@ -132,14 +132,6 @@
                                             <option value="price DESC">Price DESC</option>
                                         </select>
                                     </form>
-                                    <!--                                    <div class="btn-group">
-                                                                            <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Sorting</button>
-                                                                            <div class="dropdown-menu dropdown-menu-right">
-                                                                                
-                                                                                <a class="dropdown-item" href="#">Ascending by price</a>
-                                                                                <a class="dropdown-item" href="#">Descending by price</a>
-                                                                            </div>
-                                                                        </div>-->
                                 </div>
                             </div>
                         </div>

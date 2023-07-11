@@ -35,8 +35,15 @@
             font-weight: 400;
             color: #6C757D;
         }
+        .pro-name {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
     </style>
 
+    
     <body>
         <!-- Topbar Start -->
         <%@include file="component/header-shop.jsp" %>
@@ -109,9 +116,7 @@
                             <input type="hidden" name="orderDetailProductImg" value="${requestScope.product.productImg}"> 
                             <input type="hidden" name="orderDetailProductName" value="${requestScope.product.productName}"> 
                             <input type="hidden" name="orderDetailPriceProduct" value="${requestScope.product.productPrice}"> 
-
-                            
-                            
+       
                             <div class=" align-items-center mb-4 pt-2">
                                 <div class="d-flex">
                                     <div class="input-group quantity mr-3 mb-3" style="width: 130px;">
@@ -164,7 +169,7 @@
                                     <img class="img-fluid w-100" src="${p.productImg}" alt="">
                                 </div>
                                 <div class="text-center py-4">
-                                    <a class="h6 text-decoration-none" href="product-detail?productId=${p.productId}">${p.productName}</a>
+                                    <a class="h6 text-decoration-none pro-name" href="product-detail?productId=${p.productId}">${p.productName}</a>
                                     <div class="d-flex align-items-center justify-content-center mt-2">
                                         <fmt:formatNumber value="${p.productPrice}" pattern="#,###" var="formattedPrice" />
                                         <h5>${formattedPrice} ₫</h5>

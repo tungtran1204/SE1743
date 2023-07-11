@@ -39,7 +39,7 @@
     </div>
     <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
         <div class="col-lg-4">
-            <a href="" class="text-decoration-none">
+            <a href="/WebLaptop" class="text-decoration-none">
                 <span class="h1 text-uppercase text-primary bg-dark px-2">Laptop</span>
                 <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Hub</span>
             </a>
@@ -49,7 +49,7 @@
                 <div class="input-group">
                     <input value="${requestScope.searchValue}" name="searchValue" type="text" class="form-control" placeholder="Search for products">
                     <div class="input-group-append">
-                        <button type="submit">
+                        <button type="submit" style="border: none">
                             <span class="input-group-text bg-transparent text-primary">
                                 <i class="fa fa-search"></i>
                             </span>
@@ -60,7 +60,7 @@
         </div>
         <div class="col-lg-4 col-6 text-right">
             <p class="m-0">Customer Service</p>
-            <h5 class="m-0">+012 345 6789</h5>
+            <h5 class="m-0">0962366626</h5>
         </div>
     </div>
 </div>
