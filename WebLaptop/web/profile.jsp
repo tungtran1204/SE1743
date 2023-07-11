@@ -53,7 +53,7 @@
                         data-toggle="modal"
                         data-target="#changeInformModal"
                         href="javascript:void(0)"
-                        >edit profile</a>
+                        >Edit profile</a>
                 </div>
                 <div style="margin-top: -50px;">
                     <ul
