@@ -6,6 +6,7 @@ package controller;
 
 import dao.ProductDAO;
 import dao.ProductImgDetailDAO;
+import entity.Cart;
 import entity.Product;
 import entity.ProductImgDetail;
 import java.io.IOException;
@@ -15,6 +16,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -87,7 +89,37 @@ public class ProductDetailController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        List<Cart> lstCart = (List<Cart>) session.getAttribute("lstCart");
+        int productId = Integer.parseInt(request.getParameter("productId"));
+        int orderDetailQuantity = Integer.parseInt(request.getParameter("orderDetailQuantity"));
+        String orderDetailProductName = request.getParameter("orderDetailProductName");
+        String orderDetailProductImg = request.getParameter("orderDetailProductImg");
+        int orderDetailPriceProduct = Integer.parseInt(request.getParameter("orderDetailPriceProduct"));
+        int index = getOneCart(lstCart, productId);
+        if (index == -1) {
+            Cart cart = Cart.builder()
+                    .orderDetailPriceProduct(orderDetailPriceProduct)
+                    .orderDetailProductImg(orderDetailProductImg)
+                    .orderDetailProductName(orderDetailProductName)
+                    .orderDetailQuantity(orderDetailQuantity)
+                    .productId(productId)
+                    .build();
+            lstCart.add(cart);
+        } else {
+            lstCart.get(index).setOrderDetailQuantity(orderDetailQuantity + lstCart.get(index).getOrderDetailQuantity());
+        }
+        response.sendRedirect("product-detail?productId=" + productId);
+
+    }
+
+    private int getOneCart(List<Cart> lstCart, int productId) {
+        for (int i = 0; i < lstCart.size(); i++) {
+            if (lstCart.get(i).getProductId() == productId) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
