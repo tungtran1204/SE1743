@@ -5,6 +5,7 @@
 package controller;
 
 import dao.AccountDAO;
+import dao.AccountDetailDAO;
 import dao.CategoryDAO;
 import dao.ProductDAO;
 import entity.Account;
@@ -68,11 +69,12 @@ public class IndexController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {HttpSession session = request.getSession();
+            throws ServletException, IOException {
+        HttpSession session = request.getSession();
         AccountDAO accountDAO = new AccountDAO();
         CategoryDAO categoryDAO = new CategoryDAO();
         ProductDAO productDAO = new ProductDAO();
-        
+
         Cookie[] cookies = request.getCookies();
         String username = null;
         String password = null;
@@ -88,13 +90,14 @@ public class IndexController extends HttpServlet {
             Account account = accountDAO.authenticate(username, password);
             if (account != null) {
                 session.setAttribute("accountCur", account);
-            } 
+                session.setAttribute(("accountDetail"), new AccountDetailDAO().getOne(account.getAccountId()));
+            }
         }
-        
+
         List<Category> lstCategory = categoryDAO.getAll();
         List<Product> lstProductFeatured = productDAO.getAllByFeatured();
         List<Product> lstProductRecent = productDAO.getAllByRecent();
-        
+
         request.setAttribute("lstCategory", lstCategory);
         request.setAttribute("lstProductFeatured", lstProductFeatured);
         request.setAttribute("lstProductRecent", lstProductRecent);

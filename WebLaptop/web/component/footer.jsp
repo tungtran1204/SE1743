@@ -1,12 +1,18 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
     <div class="row px-xl-5 pt-5">
-        <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
-            <h5 class="text-secondary text-uppercase mb-4">Get In Touch</h5>
-            <p class="mb-4">No dolore ipsum accusam no lorem. Invidunt sed clita kasd clita et et dolor sed dolor. Rebum tempor no vero est magna amet no</p>
-            <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
-            <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
-            <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
+        <div class="col-lg-4">
+            <a href="" class="text-decoration-none">
+                <span class="h1 text-uppercase text-primary bg-dark px-2">Laptop</span>
+                <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Hub</span>
+            </a>
+            <p class="footer" style="margin-top: 20px; margin-left: 9px; font-size: 87%">LaptopHub cam kết nỗ lực hết mình nhằm cung cấp sản phẩm và dịch vụ đúng với những giá trị mà khách hàng mong đợi.</p>
+            <p class="mb-2" style="margin-left: 9px;"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Ninh Bình City</p>
+                <p class="mb-2" style="margin-left: 9px;"><i class="fa fa-envelope text-primary mr-3"></i>tungtran120403@gmail.com</p>
+                <p class="mb-0" style="margin-left: 9px;"><i class="fa fa-phone-alt text-primary mr-3"></i>0966622626</p>
         </div>
+        
         <div class="col-lg-8 col-md-12">
             <div class="row">
                 <div class="col-md-4 mb-5">

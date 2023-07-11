@@ -5,6 +5,7 @@
 package controller;
 
 import dao.AccountDAO;
+import dao.AccountDetailDAO;
 import entity.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,7 +16,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import static org.apache.tomcat.jni.User.username;
 
 /**
  *
@@ -23,6 +23,7 @@ import static org.apache.tomcat.jni.User.username;
  */
 @WebServlet(name = "SignInController", urlPatterns = {"/sign-in"})
 public class SignInController extends HttpServlet {
+
     private static final String REMEMBER_ME_COOKIE_USERNAME = "rememberMeUsername";
     private static final String REMEMBER_ME_COOKIE_PASSWORD = "rememberMePasword";
     private static final int REMEMBER_ME_COOKIE_MAX_AGE = 3600 * 24 * 30; // 30 days
@@ -64,8 +65,8 @@ public class SignInController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {   
-        
+            throws ServletException, IOException {
+
         HttpSession session = request.getSession();
         AccountDAO accountDAO = new AccountDAO();
         Cookie[] cookies = request.getCookies();
@@ -83,14 +84,15 @@ public class SignInController extends HttpServlet {
             Account account = accountDAO.authenticate(username, password);
             if (account != null) {
                 session.setAttribute("accountCur", account);
+                session.setAttribute(("accountDetail"), new AccountDetailDAO().getOne(account.getAccountId()));
                 response.sendRedirect("/WebLaptop");
                 return;
-            } 
+            }
         }
 
         request.getRequestDispatcher("sign-in.jsp").forward(request, response);
     }
-    
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -114,6 +116,7 @@ public class SignInController extends HttpServlet {
             request.getRequestDispatcher("sign-in").forward(request, response);
         } else {
             session.setAttribute("accountCur", account);
+            session.setAttribute(("accountDetail"), new AccountDetailDAO().getOne(account.getAccountId()));
             if (isRemeberMe) {
                 Cookie cookieUsername = new Cookie(REMEMBER_ME_COOKIE_USERNAME, username);
                 cookieUsername.setMaxAge(REMEMBER_ME_COOKIE_MAX_AGE);

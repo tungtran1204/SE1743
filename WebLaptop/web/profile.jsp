@@ -36,85 +36,83 @@
     </head>
 
     <body>
-       
+
         <!-- Topbar End -->
         <div class="container emp-profile">
+
             <div class="row">
-                
-                <div class="row col-md-12">
-                    <div class="col-md-9">
-                        <div class="profile-head">
-                            <h5>${sessionScope.accountDetail.accountDetailName}</h5>
-                            <h6>Email: ${sessionScope.accountCur.accountEmail}</h6>
-                            <!--                            <p class="proile-rating">RANKINGS : <span>8/10</span></p>-->
-                        </div>
+                <div class="col-9">
+                    <div class="profile-head">
+                        <h5>${sessionScope.accountDetail.accountDetailName}</h5>
+                        <h6>Email: ${sessionScope.accountCur.accountEmail}</h6>
+                        <!--                            <p class="proile-rating">RANKINGS : <span>8/10</span></p>-->
                     </div>
-                    <div class="col-md-3">
-                        <a
-                            class="profile-edit-btn"
-                            data-toggle="modal"
-                            data-target="#changeInformModal"
-                            href="javascript:void(0)"
-                            >edit profile</a
+                </div>
+                <div class="col-3">
+                    <a
+                        class="profile-edit-btn"
+                        data-toggle="modal"
+                        data-target="#changeInformModal"
+                        href="javascript:void(0)"
+                        >edit profile</a
+                    >
+                </div>
+                <div style="margin-top: -50px;">
+                    <ul
+                        class="nav nav-tabs"
+                        id="myTab"
+                        role="tablist"
+                        style="margin-top: 50px"
                         >
-                    </div>
-                    <div class="col-md-12" style="margin-top: -50px;">
-                        <ul
-                            class="nav nav-tabs"
-                            id="myTab"
-                            role="tablist"
-                            style="margin-top: 50px"
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                id="home-tab"
+                                data-toggle="tab"
+                                href="#home"
+                                role="tab"
+                                aria-controls="home"
+                                aria-selected="true"
+                                >About</a
                             >
-                            <li class="nav-item">
-                                <a
-                                    class="nav-link"
-                                    id="home-tab"
-                                    data-toggle="tab"
-                                    href="#home"
-                                    role="tab"
-                                    aria-controls="home"
-                                    aria-selected="true"
-                                    >About</a
-                                >
-                            </li>
-                            <li class="nav-item">
-                                <a
-                                    class="nav-link"
-                                    id="address-tab"
-                                    data-toggle="tab"
-                                    href="#address"
-                                    role="tab"
-                                    aria-controls="address"
-                                    aria-selected="false"
-                                    >Address Contact</a
-                                >
-                            </li>
-                            <li class="nav-item">
-                                <a
-                                    class="nav-link"
-                                    id="delivering-tab"
-                                    data-toggle="tab"
-                                    href="#delivering"
-                                    role="tab"
-                                    aria-controls="delivering"
-                                    aria-selected="false"
-                                    >Delivering</a
-                                >
-                            </li>
-                            <li class="nav-item">
-                                <a
-                                    class="nav-link"
-                                    id="done-order-tab"
-                                    data-toggle="tab"
-                                    href="#done-order"
-                                    role="tab"
-                                    aria-controls="done-order"
-                                    aria-selected="false"
-                                    >Done Order</a
-                                >
-                            </li>
-                        </ul>
-                    </div>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                id="address-tab"
+                                data-toggle="tab"
+                                href="#address"
+                                role="tab"
+                                aria-controls="address"
+                                aria-selected="false"
+                                >Address Contact</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                id="delivering-tab"
+                                data-toggle="tab"
+                                href="#delivering"
+                                role="tab"
+                                aria-controls="delivering"
+                                aria-selected="false"
+                                >Delivering</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                id="done-order-tab"
+                                data-toggle="tab"
+                                href="#done-order"
+                                role="tab"
+                                aria-controls="done-order"
+                                aria-selected="false"
+                                >Done Order</a
+                            >
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="row">
@@ -128,7 +126,7 @@
                         <%@include file="tab/profile/tab-delivering.jsp" %>
                         <!------------------Order Done----------------------->
                         <%@include file="tab/profile/tab-done-order.jsp" %>
-                        
+
                     </div>
                 </div>
             </div>
@@ -151,22 +149,22 @@
         $("#home").addClass("show active");
     </script>
     <script>
-      const addressTab = '<%= session.getAttribute("addressTab") %>';
-      if (addressTab !== 'null') {
-        $("#home-tab").removeClass("active");
-        $("#home").removeClass("show active");
-        $("#address-tab").addClass("active");
-        $("#address").addClass("show active");
-      }
+        const addressTab = '<%= session.getAttribute("addressTab") %>';
+        if (addressTab !== 'null') {
+            $("#home-tab").removeClass("active");
+            $("#home").removeClass("show active");
+            $("#address-tab").addClass("active");
+            $("#address").addClass("show active");
+        }
     </script>
     <script>
-      const message = '<%= session.getAttribute("msg") %>';
-      if (message !== 'null') {
-        var myModal = new bootstrap.Modal(document.getElementById("changePasswordModal"), {});
-        document.onreadystatechange = function () {
-            myModal.show();
-        };
-      }
+        const message = '<%= session.getAttribute("msg") %>';
+        if (message !== 'null') {
+            var myModal = new bootstrap.Modal(document.getElementById("changePasswordModal"), {});
+            document.onreadystatechange = function () {
+                myModal.show();
+            };
+        }
     </script>
     <%
         request.getSession().removeAttribute("msg");
