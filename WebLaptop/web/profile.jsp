@@ -44,8 +44,7 @@
                 <div class="col-9">
                     <div class="profile-head">
                         <h5>${sessionScope.accountDetail.accountDetailName}</h5>
-                        <h6>Email: ${sessionScope.accountCur.accountEmail}</h6>
-                        <!--                            <p class="proile-rating">RANKINGS : <span>8/10</span></p>-->
+                        <!--<h6>Email: ${sessionScope.accountCur.accountEmail}</h6>-->
                     </div>
                 </div>
                 <div class="col-3">
@@ -54,8 +53,7 @@
                         data-toggle="modal"
                         data-target="#changeInformModal"
                         href="javascript:void(0)"
-                        >edit profile</a
-                    >
+                        >edit profile</a>
                 </div>
                 <div style="margin-top: -50px;">
                     <ul
