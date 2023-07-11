@@ -7,61 +7,58 @@
     >
     <div class="row">
         <div class="col-md-6">
-            <label><i class="fa-solid fa-envelope icon"></i>Email</label>
+            <label style="color: #36424c"><i class="fa-solid fa-envelope icon"></i>Email</label>
         </div>
         <div class="col-md-6">
-            <p>${sessionScope.accountCur.accountEmail}</p>
+            <h5 style="color: #6C757D">${sessionScope.accountCur.accountEmail}</h5>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <label><i class="fa-solid fa-signature icon"></i> Name</label>
+            <label style="color: #36424c"><i class="fa-solid fa-signature icon"></i> Name</label>
         </div>
         <div class="col-md-4">
-            <p>${sessionScope.accountDetail.accountDetailName}</p>
+            <h5 style="color: #6C757D">${sessionScope.accountDetail.accountDetailName}</h5>
         </div>
-        <div class="col-md-2">
-            <p><i class="fa-regular fa-pen-to-square"></i></p>
-        </div>
+        
     </div>
     <div class="row">
         <div class="col-md-6">
-            <label
+            <label style="color: #36424c"
                 ><i class="fa-solid fa-calendar-days icon"></i> Date Of
                 Birth</label
             >
         </div>
         <div class="col-md-4">
-            <p>${sessionScope.accountDetail.accountDetailDob}</p>
+            <h5 style="color: #6C757D">${sessionScope.accountDetail.accountDetailDob}</h5>
         </div>
-        <div class="col-md-2">
-            <p><i class="fa-regular fa-pen-to-square"></i></p>
-        </div>
+
     </div>
     <div class="row">
         <div class="col-md-6">
-            <label
+            <label style="color: #36424c"
                 ><i class="fa-solid fa-calendar-days icon"></i> Date Of
                 Creation</label
             >
         </div>
         <div class="col-md-6">
-            <p>${sessionScope.accountDetail.accountDetailDoc}</p>
+            <h5 style="color: #6C757D">${sessionScope.accountDetail.accountDetailDoc}</h5>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <label><i class="fa-solid fa-lock icon"></i> Pass Word</label>
+            <label style="color: #36424c"><i class="fa-solid fa-lock icon"></i> Pass Word</label>
         </div>
         <div class="col-md-6">
-            <p>
+            <h5  style="color: #6C757D">
                 <a
                     data-toggle="modal"
                     data-target="#changePasswordModal"
                     href="javascript:void(0)"
-                    >Change</a
+                    style="color: #5d768d; font-size: 85%"
+                    >Change password</a
                 >
-            </p>
+            </h5>
         </div>
     </div>
 </div>

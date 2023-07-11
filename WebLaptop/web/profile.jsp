@@ -40,8 +40,11 @@
     </head>
     <style>
         body{       
-            background: url(../img/background-xam-dep-sang-tao-va-an-tuong-nhat.jpg);
-        } 
+            background: url(assets/img/background-xam-dep-sang-tao-va-an-tuong-nhat.jpg);
+        }
+        .nav-link{
+            color: #FFD333;
+        }
     </style>
     <body>
 
@@ -50,7 +53,7 @@
             <div class="row">
                 <div class="col-9">
                     <div class="profile-head">
-                        <h5>${sessionScope.accountDetail.accountDetailName}</h5>
+                        <h4 style="margin-bottom: 20px; margin-left: 20px">${sessionScope.accountDetail.accountDetailName}</h4>
                         <!--<h6>Email: ${sessionScope.accountCur.accountEmail}</h6>-->
                     </div>
                 </div>
@@ -78,6 +81,7 @@
                                 role="tab"
                                 aria-controls="home"
                                 aria-selected="true"
+                                style="color: #5d768d"
                                 >About</a
                             >
                         </li>
@@ -90,6 +94,7 @@
                                 role="tab"
                                 aria-controls="address"
                                 aria-selected="false"
+                                style="color: #5d768d"
                                 >Address Contact</a
                             >
                         </li>
@@ -102,6 +107,7 @@
                                 role="tab"
                                 aria-controls="delivering"
                                 aria-selected="false"
+                                style="color: #5d768d"
                                 >Delivering</a
                             >
                         </li>
@@ -114,6 +120,7 @@
                                 role="tab"
                                 aria-controls="done-order"
                                 aria-selected="false"
+                                style="color: #5d768d"
                                 >Done Order</a
                             >
                         </li>
@@ -135,8 +142,8 @@
                     </div>
                 </div>
             </div>
-            <A HREF="javascript:javascript:history.go(-1)"><i class="fa-sharp fa-solid fa-circle-arrow-left fa-xl" style="margin-left: 50px; font-size: 250%; margin-top:50px"></i></A>            
-            <a href="/WebLaptop"><i class="fa-solid fa-house fa-xl" style="margin-left: 50px; font-size: 250%;"></i></a>   
+            <A HREF="javascript:javascript:history.go(-1)"><i class="fa-sharp fa-solid fa-circle-arrow-left fa-xl" style="margin-left: 50px; font-size: 250%; margin-top:50px; color: #5d768d"></i></A>            
+            <a href="/WebLaptop"><i class="fa-solid fa-house fa-xl" style="margin-left: 50px; font-size: 250%; color: #5d768d"></i></a>   
         </div>
                         
 
