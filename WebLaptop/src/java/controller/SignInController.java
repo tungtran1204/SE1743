@@ -116,7 +116,7 @@ public class SignInController extends HttpServlet {
         Account account = accountDAO.authenticate(username, password);
         if (account == null) {
             request.setAttribute("msg", "Sign in fail username or pasword");
-            request.getRequestDispatcher("sign-in").forward(request, response);
+            request.getRequestDispatcher("sign-in.jsp").forward(request, response);
         } else {
             session.setAttribute("accountCur", account);
             session.setAttribute(("accountDetail"), new AccountDetailDAO().getOne(account.getAccountId()));

@@ -82,7 +82,7 @@
     <body>
         <form action="sign-in" method="post">
             <h3>Sign in</h3>
-            <div style="color: red">
+            <div style="color: #b5bccaed; margin-top: 10px">
                 ${requestScope.msg}
             </div>
             <label for="username">Username</label>
@@ -96,7 +96,7 @@
                 <h4 style="margin-left: 100px">Remember me</h4>
             </label>
             <button type="submit">SIGN IN</button>
-            <div class="social">
+            <div class="social" style="margin-top: 20px">
                 <a href="sign-up" style="margin-left: 50px; text-decoration: none">Sign Up</a>
                 <a href="/WebLaptop" style="margin-left: 120px; text-decoration: none"> Home</a>
             </div>
