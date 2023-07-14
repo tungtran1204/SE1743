@@ -9,6 +9,7 @@ import dao.AccountDetailDAO;
 import dao.CategoryDAO;
 import dao.ProductDAO;
 import entity.Account;
+import entity.AccountDetail;
 import entity.Cart;
 import entity.Category;
 import entity.Product;
@@ -76,6 +77,7 @@ public class IndexController extends HttpServlet {
         AccountDAO accountDAO = new AccountDAO();
         CategoryDAO categoryDAO = new CategoryDAO();
         ProductDAO productDAO = new ProductDAO();
+        AccountDetailDAO accountDetailDAO = new AccountDetailDAO();
 
         Cookie[] cookies = request.getCookies();
         String username = null;
@@ -91,20 +93,25 @@ public class IndexController extends HttpServlet {
             }
             Account account = accountDAO.authenticate(username, password);
             if (account != null) {
-                session.setAttribute("accountCur", account);
-                session.setAttribute("lstCart", new ArrayList<Cart>());
-                session.setAttribute(("accountDetail"), new AccountDetailDAO().getOne(account.getAccountId()));
+                if (account != null) {
+                    session.setAttribute("accountCur", account);
+                    if (session.getAttribute("lstCart") == null) {
+                        session.setAttribute("lstCart", new ArrayList<Cart>());
+                    }
+                    AccountDetail accountDetail = accountDetailDAO.getOne(account.getAccountId());
+                    session.setAttribute("accountDetail", accountDetail);
+                }
             }
+
+            List<Category> lstCategory = categoryDAO.getAll();
+            List<Product> lstProductFeatured = productDAO.getAllByFeatured();
+            List<Product> lstProductRecent = productDAO.getAllByRecent();
+
+            request.setAttribute("lstCategory", lstCategory);
+            request.setAttribute("lstProductFeatured", lstProductFeatured);
+            request.setAttribute("lstProductRecent", lstProductRecent);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
-
-        List<Category> lstCategory = categoryDAO.getAll();
-        List<Product> lstProductFeatured = productDAO.getAllByFeatured();
-        List<Product> lstProductRecent = productDAO.getAllByRecent();
-
-        request.setAttribute("lstCategory", lstCategory);
-        request.setAttribute("lstProductFeatured", lstProductFeatured);
-        request.setAttribute("lstProductRecent", lstProductRecent);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     /**

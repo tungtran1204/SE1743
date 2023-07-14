@@ -36,14 +36,22 @@
                         <a href="contact" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-<!--                        <a href="" class="btn px-0">
-                            <i class="fas fa-heart text-primary"></i>
-                            <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                        </a>-->
-                        <a href="cart" class="btn px-0 ml-3">
-                            <i class="fas fa-shopping-cart text-primary"></i>
-                            <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">${sessionScope.lstCart.size()}</span>
-                        </a>
+                        <!--                        <a href="" class="btn px-0">
+                                                    <i class="fas fa-heart text-primary"></i>
+                                                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                                </a>-->
+                        <c:if test="${sessionScope.accountCur != null}">
+                            <a href="cart" class="btn px-0 ml-3">
+                                <i class="fas fa-shopping-cart text-primary"></i>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">${sessionScope.lstCart.size()}</span>
+                            </a>
+                        </c:if>
+                        <c:if test="${sessionScope.accountCur == null}">
+                            <a href="sign-in">
+                                <i class="fas fa-shopping-cart text-primary"></i>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">${sessionScope.lstCart.size()}</span>
+                            </a>
+                        </c:if>
                     </div>
                 </div>
             </nav>
