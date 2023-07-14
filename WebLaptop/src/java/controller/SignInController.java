@@ -129,7 +129,11 @@ public class SignInController extends HttpServlet {
                 response.addCookie(cookieUsername);
                 response.addCookie(cookiePassword);
             }
-            response.sendRedirect("/WebLaptop");
+            if (account.getRole().getRoleName().equals("USER")) {
+                response.sendRedirect("/WebLaptop");
+            } else {
+                response.sendRedirect("order-management");
+            }
         }
     }
 
