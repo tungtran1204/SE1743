@@ -6,7 +6,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>MultiShop - Online Shop Website Template</title>
+        <title>LaptopHub - Best Laptop</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Free HTML Templates" name="keywords">
         <meta content="Free HTML Templates" name="description">
@@ -45,8 +45,8 @@
             <div class="row px-xl-5">
                 <div class="col-12">
                     <nav class="breadcrumb bg-light mb-30">
-                        <a class="breadcrumb-item text-dark" href="#">Home</a>
-                        <a class="breadcrumb-item text-dark" href="#">Shop</a>
+                        <a class="breadcrumb-item text-dark" href="/WebLaptop">Home</a>
+                        <a class="breadcrumb-item text-dark" href="shop">Shop</a>
                         <span class="breadcrumb-item active">Shopping Cart</span>
                     </nav>
                 </div>
@@ -71,7 +71,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="align-middle">
-                                    <c:forEach items="${sessionScope.lstCart}" var="c">
+                                    <c:forEach items="${sessionScope.lstCart}" var="c" varStatus="i">
                                         <tr>
                                             <td class="align-middle"> <a class="d-flex" style="text-decoration: none; color: black; line-height: 1.6;" href="product-detail?productId=${c.productId}">
                                                     <img src="${c.orderDetailProductImg}" alt="" style="width: 50px;"><div style="margin-left: 7px; text-align: left !important;">${c.orderDetailProductName}</div></a></td>
@@ -84,7 +84,7 @@
                                                 </div>
                                             </td>
                                             <td class="align-middle">
-                                                <a><button type="button" class="btn btn-sm btn-danger"> <i class="fa fa-times"></i></button></a>
+                                                <a href="delete-cart?index=${i.index}"><button type="submit" class="btn btn-sm btn-danger"> <i class="fa fa-times"></i></button></a>
                                             </td>
                                         </tr>
                                     </c:forEach>
