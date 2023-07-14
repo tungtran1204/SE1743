@@ -4,9 +4,11 @@
  */
 package controller;
 
+import dao.CategoryDAO;
 import dao.ProductDAO;
 import dao.ProductImgDetailDAO;
 import entity.Cart;
+import entity.Category;
 import entity.Product;
 import entity.ProductImgDetail;
 import java.io.IOException;
@@ -66,6 +68,9 @@ public class ProductDetailController extends HttpServlet {
             throws ServletException, IOException {
         ProductDAO productDAO = new ProductDAO();
         ProductImgDetailDAO productImgDetailDAO = new ProductImgDetailDAO();
+        CategoryDAO categoryDAO = new CategoryDAO();
+        List<Category> lstCategory = categoryDAO.getAll();
+        request.setAttribute("lstCategory", lstCategory);
         
         int productId = Integer.parseInt(request.getParameter("productId"));
         Product product = productDAO.getOne(productId);

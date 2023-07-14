@@ -59,8 +59,8 @@
         <div class="container-fluid">
             <div class="row px-xl-5">
                 <div class="col-lg-8 table-responsive mb-5">
-                    <form action="cart" method="post">
-                        <c:if test="${sessionScope.lstCart.size() ne 0}">
+                    <c:if test="${sessionScope.lstCart.size() ne 0}">
+                        <form action="cart" method="post">
                             <table class="table table-light table-borderless table-hover text-center mb-0">
                                 <thead class="thead-dark">
                                     <tr>
@@ -84,19 +84,18 @@
                                                 </div>
                                             </td>
                                             <td class="align-middle">
-                                                <a href="delete-cart?index=${i.index}"><button type="submit" class="btn btn-sm btn-danger"> <i class="fa fa-times"></i></button></a>
+                                                <a href="delete-cart?index=${i.index}"><button type="button" class="btn btn-sm btn-danger"> <i class="fa fa-times"></i></button></a>
                                             </td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
                             </table>
-
                             <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Update</button>
-                        </c:if>
-                        <c:if test="${sessionScope.lstCart.size() eq 0}">
-                            <h3 style="margin-bottom: 137px">There are no products in the cart</h3>
-                        </c:if>
-                    </form>
+                        </form>
+                    </c:if>
+                    <c:if test="${sessionScope.lstCart.size() eq 0}">
+                        <h3 style="margin-bottom: 137px">There are no products in the cart</h3>
+                    </c:if>
                 </div>
                 <c:if test="${sessionScope.lstCart.size() ne 0}">
                     <div class="col-lg-4">
