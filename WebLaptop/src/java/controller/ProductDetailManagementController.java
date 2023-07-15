@@ -4,15 +4,14 @@
  */
 package controller;
 
-import dao.OrderDetailDAO;
-import dao.AccountContactDAO;
 import dao.CategoryDAO;
-import dao.OrderDAO;
-import entity.Account;
-import entity.AccountContact;
-import entity.Cart;
+import dao.ProductDAO;
+import dao.ProductImgDetailDAO;
+import dao.TypeDAO;
 import entity.Category;
-import entity.Order;
+import entity.Product;
+import entity.ProductImgDetail;
+import entity.Type;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -20,16 +19,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author DELL
  */
-@WebServlet(name = "CheckoutController", urlPatterns = {"/checkout"})
-public class CheckoutController extends HttpServlet {
+@WebServlet(name = "ProductDetailManagementController", urlPatterns = {"/product-detail-management"})
+public class ProductDetailManagementController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,10 +45,10 @@ public class CheckoutController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CheckoutController</title>");
+            out.println("<title>Servlet ProductDetailManagementController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CheckoutController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ProductDetailManagementController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -69,21 +66,22 @@ public class CheckoutController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        List<Cart> lstCart = (List<Cart>) session.getAttribute("lstCart");
+        ProductDAO productDAO = new ProductDAO();
         CategoryDAO categoryDAO = new CategoryDAO();
-        Account account = (Account) session.getAttribute("accountCur");
-        AccountContactDAO accountContactDAO = new AccountContactDAO();
-        List<AccountContact> lstAccountContact = accountContactDAO.getAll(account.getAccountId());
-        request.setAttribute("lstAccountContact", lstAccountContact);
+        ProductImgDetailDAO productImgDetailDAO = new ProductImgDetailDAO();
+        TypeDAO typeDAO = new TypeDAO();
+        List<Type> lstType = typeDAO.getAll();
+        request.setAttribute("lstType", lstType);
+        
         List<Category> lstCategory = categoryDAO.getAll();
+        int productId = Integer.parseInt(request.getParameter("productId"));
+        List<ProductImgDetail> lstProductImgDetail = productImgDetailDAO.getAll(productId);
+        Product product = productDAO.getOne(productId);
+        
+        request.setAttribute("product", product);
         request.setAttribute("lstCategory", lstCategory);
-        int totalPrice = 0;
-        for (Cart c : lstCart) {
-            totalPrice += c.getOrderDetailPriceProduct() * c.getOrderDetailQuantity();
-        }
-        request.setAttribute("totalPrice", totalPrice);
-        request.getRequestDispatcher("checkout.jsp").forward(request, response);
+        request.setAttribute("lstProductImgDetail", lstProductImgDetail);
+        request.getRequestDispatcher("product-detail-management.jsp").forward(request, response);
     }
 
     /**
@@ -97,28 +95,30 @@ public class CheckoutController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        AccountContactDAO accountContactDAO = new AccountContactDAO();
-        OrderDAO orderDAO = new OrderDAO();
-        OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
-        Account account = (Account) session.getAttribute("accountCur");
-        List<Cart> lstCart = (List<Cart>) session.getAttribute("lstCart");
+        ProductDAO productDAO = new ProductDAO();
         
-        int accountContactId = Integer.parseInt(request.getParameter("accountContactId"));
-        AccountContact accountContact = accountContactDAO.getOne(accountContactId);
-        Order order = Order.builder()
-                .account(account)
-                .orderNameContact(accountContact.getAccountContactName())
-                .orderPhoneContact(accountContact.getAccountContactMobile())
-                .orderAddressContact(accountContact.getAccountContactAddress())
-                .build();
-        int orderId = orderDAO.add(order);
-        for (Cart c : lstCart) {
-            orderDetailDAO.add(c, orderId);
-        }
-        lstCart = new ArrayList<>();
-        session.setAttribute("lstCart", lstCart);
-        response.sendRedirect("thank.jsp");
+        int productId = Integer.parseInt(request.getParameter("productId"));
+        String productName = request.getParameter("productName");
+        int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+        int productPrice = Integer.parseInt(request.getParameter("productPrice"));
+        boolean productIsFeatured = request.getParameter("productIsFeatured") != null;
+        boolean productIsRecent = request.getParameter("productIsRecent") != null;
+        String productDescription = request.getParameter("productDescription");     
+        int typeId = Integer.parseInt(request.getParameter("typeId"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        
+        Product product = productDAO.getOne(productId);
+        product.setProductName(productName);
+        product.setCategoryId(categoryId);
+        product.setProductPrice(productPrice);
+        product.setProductIsFeatured(productIsFeatured);
+        product.setProductIsRecent(productIsRecent);
+        product.setProductDescription(productDescription);
+        product.setQuantity(quantity);
+        product.setTypeId(typeId);
+        productDAO.update(product, productId);
+        
+        response.sendRedirect("product-detail-management?productId=" + productId);
     }
 
     /**

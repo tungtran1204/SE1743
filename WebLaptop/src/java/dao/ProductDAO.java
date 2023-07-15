@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -134,7 +135,6 @@ public class ProductDAO {
                 + "     p.typeId,\n"
                 + "     p.quantity\n"
                 + "from product p \n"
-                
                 + " Where categoryId = ? And p.productPrice between ? and ? ";
         if (typeIds != null) {
             sql += " AND (";
@@ -235,7 +235,6 @@ public class ProductDAO {
                 + "     p.typeId,\n"
                 + "     p.quantity\n"
                 + "from product p \n"
-                
                 + " Where categoryId = ? And p.productPrice between ? and ? ";
         if (typeIds != null) {
             sql += " AND (";
@@ -279,6 +278,7 @@ public class ProductDAO {
         }
         return null;
     }
+
     public int sizeByCategory(int categoryId, String[] typeIds, String priceFrom, String priceTo) {
 
         String sql = "SELECT COUNT(a.productId) as total from("
@@ -465,8 +465,57 @@ public class ProductDAO {
         return null;
     }
 
+    public int add(Product obj) {
+        int check = 0;
+        String sql = "INSERT [dbo].[Product] ([productName], [productImg], [productPrice], [productDescription], [categoryId], [productIsFeatured], [productIsRecent], [productDeleted], [typeId], [quantity])"
+                + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try ( Connection con = SQLServerConnection.getConnection();  PreparedStatement ps = (con != null) ? con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS) : null;) {
+            ps.setObject(1, obj.getProductName());
+            ps.setObject(2, obj.getProductImg());
+            ps.setObject(3, obj.getProductPrice());
+            ps.setObject(4, obj.getProductDescription());
+            ps.setObject(5, obj.getCategoryId());
+            ps.setObject(6, obj.isProductIsFeatured());
+            ps.setObject(7, obj.isProductIsRecent());
+            ps.setObject(8, obj.isProductDeleted());
+            ps.setObject(9, obj.getTypeId());
+            ps.setObject(10, obj.getQuantity());
+
+            check = ps.executeUpdate();
+            if (check > 0) {
+                ResultSet rs = ps.getGeneratedKeys();
+                rs.next();
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }
+        return 0;
+    }
+
+    public boolean update(Product obj, int productId) {
+        int check = 0;
+        String sql = "UPDATE Product SET productName = ?, categoryId = ?, productPrice = ?, productIsFeatured = ?, productIsRecent = ?, productDescription = ?, typeId = ?, quantity = ? WHERE productId = ?";
+
+        try ( Connection con = SQLServerConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql);) {
+            ps.setObject(1, obj.getProductName());
+            ps.setObject(2, obj.getCategoryId());
+            ps.setObject(3, obj.getProductPrice());
+            ps.setObject(4, obj.isProductIsFeatured());
+            ps.setObject(5, obj.isProductIsRecent());
+            ps.setObject(6, obj.getProductDescription());
+            ps.setObject(7, obj.getTypeId());
+            ps.setObject(8, obj.getQuantity());
+            ps.setObject(9, productId);
+            check = ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }
+        return check > 0;
+    }
+
     public static void main(String[] args) {
         String[] i = {"1", "2"};
-        System.out.println(new ProductDAO().getListProductSort(9, 1, 1 ,i, "0", "1000000000", "asc"));
+        System.out.println(new ProductDAO().getListProductSort(9, 1, 1, i, "0", "1000000000", "asc"));
     }
 }

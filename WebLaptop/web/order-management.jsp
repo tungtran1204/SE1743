@@ -184,7 +184,6 @@
                                 <div class="flex-fill">
                                     <h5 class="bold"><a class="text-danger" href="product-detail?productId=` + orderDetail.productId + `">` + orderDetail.orderDetailProductName + `</a></h5>
                                     <p class="text-muted"> Qt: ` + orderDetail.orderDetailQuantity + ` item</p> 
-                                    <p class="text-muted"> Color: ` + orderDetail.orderDetailColorValue + `</p> 
 
                                     <h4 class="mb-3"><span class="small text-muted"> Unit Price: </span> ` + orderDetail.orderDetailPriceProduct + ` VND</h4>
                                 </div>

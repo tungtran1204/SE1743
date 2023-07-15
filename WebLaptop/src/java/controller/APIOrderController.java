@@ -4,7 +4,9 @@
  */
 package controller;
 
-import dao.AccountDAO;
+import com.google.gson.Gson;
+import dao.OrderDetailDAO;
+import entity.OrderDetail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,16 +14,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import utils.Helper;
-import utils.Mail;
+import java.util.List;
 
 /**
  *
- * @author DELL
+ * @author dell
  */
-@WebServlet(name = "SignUpController", urlPatterns = {"/sign-up"})
-public class SignUpController extends HttpServlet {
+@WebServlet(name = "APIOrderController", urlPatterns = {"/api/orderDetail"})
+public class APIOrderController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +40,10 @@ public class SignUpController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SignUpController</title>");            
+            out.println("<title>Servlet APIOrderController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SignUpController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet APIOrderController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,7 +61,18 @@ public class SignUpController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("sign-up.jsp").forward(request, response);
+        try ( PrintWriter out = response.getWriter()) {
+            OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
+            int orderId = Integer.parseInt(request.getParameter("orderId"));
+            List<OrderDetail> lstOrderDetail = orderDetailDAO.getAllOrderDetail(orderId);
+            
+            String lstOrderDetailJsonString = new Gson().toJson(lstOrderDetail);
+
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            out.print(lstOrderDetailJsonString);
+            out.flush();
+        }
     }
 
     /**
@@ -75,21 +86,7 @@ public class SignUpController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        AccountDAO accountDAO = new AccountDAO();
-        
-        String email = request.getParameter("email");
-        if (accountDAO.getOneByEmail(email) != null) {
-            request.setAttribute("msg", "Email already exist! Input again");
-            request.getRequestDispatcher("sign-up.jsp").forward(request, response);
-        } else {
-            session.setAttribute("email", email);
-            String otp = Helper.genRandSixDigit();
-            session.setAttribute("systemOtp", otp);
-
-            Mail.send(email, "OTP to sign up", otp);
-            response.sendRedirect("otp-confirmation");
-        }
+        processRequest(request, response);
     }
 
     /**
