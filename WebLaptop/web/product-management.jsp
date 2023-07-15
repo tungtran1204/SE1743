@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png" />
         <link rel="icon" type="image/png" href="assets/img/favicon.png" />
-        <title>Material Dashboard 2 by Creative Tim</title>
+        <title>LaptopHub - Best Laptop</title>
         <!--     Fonts and icons     -->
         <link rel="stylesheet" type="text/css"
               href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -31,6 +31,15 @@
         <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
     </head>
 
+    <style>
+        .three-line-paragraph {
+            display: inline-block;
+            width: 220px;
+            white-space: nowrap;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+        }
+    </style>
     <body class="g-sidenav-show bg-gray-200">
         <%@include file="component/sidebar-admin.jsp" %>
         <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
@@ -43,7 +52,7 @@
                             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                                 <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex">
                                     <h6 class="text-white text-capitalize ps-3 m-0">
-                                        Product Management / <a style="color: white;" href="javascript:void(0)" data-bs-toggle="modal"
+                                        Product Management - <a style="color: white;" href="javascript:void(0)" data-bs-toggle="modal"
                                                                 data-bs-target="#modal-add-product">ADD PRODUCT</a>
                                     </h6>
                                 </div>
@@ -65,6 +74,9 @@
                                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     View
                                                 </th>
+                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                    Delete
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -77,7 +89,7 @@
                                                                      alt="user1" />
                                                             </div>
                                                             <div class="d-flex flex-column justify-content-center">
-                                                                <h6 class="mb-0 text-sm">${p.productName}</h6>
+                                                                <h6 class="mb-0 text-sm three-line-paragraph">${p.productName}</h6>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -90,6 +102,9 @@
                                                     <td class="align-middle text-center">
                                                         <a href="product-detail-management?productId=${p.productId}"><i
                                                                 class="fa-solid fa-eye"></i></a>
+                                                    </td>
+                                                    <td class="align-middle text-center"> 
+                                                        <a href="delete-product?productId=${p.productId}"><i class="fa-solid fa-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             </c:forEach>

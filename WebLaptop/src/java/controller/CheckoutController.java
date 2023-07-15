@@ -118,7 +118,7 @@ public class CheckoutController extends HttpServlet {
         }
         lstCart = new ArrayList<>();
         session.setAttribute("lstCart", lstCart);
-        response.sendRedirect("thank.jsp");
+        response.sendRedirect("checkout.jsp");
     }
 
     /**

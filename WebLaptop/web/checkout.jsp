@@ -58,24 +58,24 @@
             <div class="row px-xl-5">
                 <div class="col-lg-8">
                     <table class="table table-light table-borderless table-hover text-center mb-0">
-                            <thead class="thead-dark">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Products</th>
+                                <th style="width: 130px">Unit Price</th>
+                                <th >Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody class="align-middle">
+                            <c:forEach items="${sessionScope.lstCart}" var="c">
                                 <tr>
-                                    <th>Products</th>
-                                    <th style="width: 130px">Unit Price</th>
-                                    <th >Quantity</th>
+                                    <td class="align-middle"> <a class="d-flex" style="text-decoration: none; color: black; line-height: 1.6;" href="product-detail?productId=${c.productId}">
+                                            <img src="${c.orderDetailProductImg}" alt="" style="width: 50px;"><div style="margin-left: 7px; text-align: left !important;">${c.orderDetailProductName}</div></a></td>
+                                    <td class="align-middle"><fmt:formatNumber value="${c.orderDetailPriceProduct}" pattern="#,###" var="formattedPrice" />${formattedPrice} ₫</td>
+                                    <td class="align-middle">${c.orderDetailQuantity}</td>
                                 </tr>
-                            </thead>
-                            <tbody class="align-middle">
-                                <c:forEach items="${sessionScope.lstCart}" var="c">
-                                    <tr>
-                                        <td class="align-middle"> <a class="d-flex" style="text-decoration: none; color: black; line-height: 1.6;" href="product-detail?productId=${c.productId}">
-                                                <img src="${c.orderDetailProductImg}" alt="" style="width: 50px;"><div style="margin-left: 7px; text-align: left !important;">${c.orderDetailProductName}</div></a></td>
-                                        <td class="align-middle"><fmt:formatNumber value="${c.orderDetailPriceProduct}" pattern="#,###" var="formattedPrice" />${formattedPrice} ₫</td>
-                                        <td class="align-middle">${c.orderDetailQuantity}</td>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
+                            </c:forEach>
+                        </tbody>
+                    </table>
                     <h5 class="section-title position-relative text-uppercase mb-3 mt-5">
                         <span class="bg-secondary pr-3">Billing Address</span>
                     </h5>
@@ -91,7 +91,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-12 form-group">
-                                    <button class="btn btn-block btn-primary font-weight-bold py-3">
+                                    <button onclick="return myFunction()" class="btn btn-block btn-primary font-weight-bold py-3">
                                         Order
                                     </button>
                                 </div>
@@ -122,7 +122,11 @@
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
+        <script>
+            function myFunction() {
+                return confirm("Are you sure you want to delete this student?");
+            }
+        </script>
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>

@@ -36,7 +36,7 @@ public class ProductDAO {
                 + "     p.typeId,\n"
                 + "     p.quantity\n"
                 + "from product p \n"
-                + " Where p.productPrice between ? and ? ";
+                + " Where p.productDeleted = 0 AND p.productPrice between ? and ? ";
         if (typeIds != null) {
             sql += " AND (";
             for (int i = 0; i < typeIds.length - 1; i++) {
@@ -77,7 +77,7 @@ public class ProductDAO {
                 + "     p.typeId,\n"
                 + "     p.quantity\n"
                 + "from product p \n"
-                + " Where p.productPrice between ? and ? ";
+                + " Where p.productDeleted = 0 AND p.productPrice between ? and ? ";
         if (typeIds != null) {
             sql += " AND (";
             for (int i = 0; i < typeIds.length - 1; i++) {
@@ -219,65 +219,65 @@ public class ProductDAO {
         return null;
     }
 
-    public List<Product> getListProductSort(int numberProductPerPage, int pageCur, int categoryId, String[] typeIds, String priceFrom, String priceTo, String type) {
-
-        String sql = ""
-                + "Select\n"
-                + "	p.productId,\n"
-                + "	p.productName,\n"
-                + "	p.productImg,\n"
-                + "	p.productPrice,\n"
-                + "	p.productDescription,\n"
-                + "	p.categoryId,\n"
-                + "	p.productIsFeatured,\n"
-                + "	p.productIsRecent,\n"
-                + "	p.productDeleted,\n"
-                + "     p.typeId,\n"
-                + "     p.quantity\n"
-                + "from product p \n"
-                + " Where categoryId = ? And p.productPrice between ? and ? ";
-        if (typeIds != null) {
-            sql += " AND (";
-            for (int i = 0; i < typeIds.length - 1; i++) {
-                sql += " p.typeId = " + typeIds[i] + " OR ";
-            }
-            sql += " p.typeId = " + typeIds[typeIds.length - 1] + " ) ";
-        }
-        sql += " Order BY p.productPrice\n" + type
-                + " OFFSET ? ROWS \n"
-                + "FETCH NEXT ? ROWS ONLY";
-        System.out.println(sql);
-        try ( Connection connection = SQLServerConnection.getConnection();  PreparedStatement ps = connection.prepareStatement(sql);) {
-            ps.setObject(1, categoryId);
-            ps.setObject(2, priceFrom);
-            ps.setObject(3, priceTo);
-            ps.setObject(4, pageCur * numberProductPerPage - numberProductPerPage);
-            ps.setObject(5, numberProductPerPage);
-            ResultSet rs = ps.executeQuery();
-
-            List<Product> list = new ArrayList<>();//
-            while (rs.next()) {
-                Product s = Product.builder()
-                        .productId(rs.getInt("productId"))
-                        .productName(rs.getString("productName"))
-                        .productImg(rs.getString("productImg"))
-                        .productPrice(rs.getInt("productPrice"))
-                        .productDescription(rs.getString("productDescription"))
-                        .categoryId(rs.getInt("categoryId"))
-                        .productIsFeatured(rs.getBoolean("productIsFeatured"))
-                        .productIsRecent(rs.getBoolean("productIsRecent"))
-                        .productDeleted(rs.getBoolean("productDeleted"))
-                        .typeId(rs.getInt("typeId"))
-                        .quantity(rs.getInt("quantity"))
-                        .build();
-                list.add(s);
-            }
-            return list;
-        } catch (SQLException e) {
-            e.printStackTrace(System.out);
-        }
-        return null;
-    }
+//    public List<Product> getListProductSort(int numberProductPerPage, int pageCur, int categoryId, String[] typeIds, String priceFrom, String priceTo, String type) {
+//
+//        String sql = ""
+//                + "Select\n"
+//                + "	p.productId,\n"
+//                + "	p.productName,\n"
+//                + "	p.productImg,\n"
+//                + "	p.productPrice,\n"
+//                + "	p.productDescription,\n"
+//                + "	p.categoryId,\n"
+//                + "	p.productIsFeatured,\n"
+//                + "	p.productIsRecent,\n"
+//                + "	p.productDeleted,\n"
+//                + "     p.typeId,\n"
+//                + "     p.quantity\n"
+//                + "from product p \n"
+//                + " Where categoryId = ? And p.productPrice between ? and ? ";
+//        if (typeIds != null) {
+//            sql += " AND (";
+//            for (int i = 0; i < typeIds.length - 1; i++) {
+//                sql += " p.typeId = " + typeIds[i] + " OR ";
+//            }
+//            sql += " p.typeId = " + typeIds[typeIds.length - 1] + " ) ";
+//        }
+//        sql += " Order BY p.productPrice\n" + type
+//                + " OFFSET ? ROWS \n"
+//                + "FETCH NEXT ? ROWS ONLY";
+//        System.out.println(sql);
+//        try ( Connection connection = SQLServerConnection.getConnection();  PreparedStatement ps = connection.prepareStatement(sql);) {
+//            ps.setObject(1, categoryId);
+//            ps.setObject(2, priceFrom);
+//            ps.setObject(3, priceTo);
+//            ps.setObject(4, pageCur * numberProductPerPage - numberProductPerPage);
+//            ps.setObject(5, numberProductPerPage);
+//            ResultSet rs = ps.executeQuery();
+//
+//            List<Product> list = new ArrayList<>();//
+//            while (rs.next()) {
+//                Product s = Product.builder()
+//                        .productId(rs.getInt("productId"))
+//                        .productName(rs.getString("productName"))
+//                        .productImg(rs.getString("productImg"))
+//                        .productPrice(rs.getInt("productPrice"))
+//                        .productDescription(rs.getString("productDescription"))
+//                        .categoryId(rs.getInt("categoryId"))
+//                        .productIsFeatured(rs.getBoolean("productIsFeatured"))
+//                        .productIsRecent(rs.getBoolean("productIsRecent"))
+//                        .productDeleted(rs.getBoolean("productDeleted"))
+//                        .typeId(rs.getInt("typeId"))
+//                        .quantity(rs.getInt("quantity"))
+//                        .build();
+//                list.add(s);
+//            }
+//            return list;
+//        } catch (SQLException e) {
+//            e.printStackTrace(System.out);
+//        }
+//        return null;
+//    }
 
     public int sizeByCategory(int categoryId, String[] typeIds, String priceFrom, String priceTo) {
 
@@ -514,8 +514,21 @@ public class ProductDAO {
         return check > 0;
     }
 
+    public boolean updateDeleted(int productId) {
+        int check = 0;
+        String sql = "UPDATE Product SET productDeleted = 1 WHERE productId = ?";
+
+        try ( Connection con = SQLServerConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql);) {
+            
+            ps.setObject(1, productId);
+            check = ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }
+        return check > 0;
+    }
     public static void main(String[] args) {
         String[] i = {"1", "2"};
-        System.out.println(new ProductDAO().getListProductSort(9, 1, 1, i, "0", "1000000000", "asc"));
+//        System.out.println(new ProductDAO().getListProductSort(9, 1, 1, i, "0", "1000000000", "asc"));
     }
 }
