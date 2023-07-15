@@ -21,16 +21,15 @@ import java.util.List;
 public class OrderDetailDAO {
     public boolean add(Cart obj, int orderId) {
         int check = 0;
-        String sql = "INSERT INTO OrderDetail(orderId, productId, orderDetailProductImg, orderDetailProductName, orderDetailPriceProduct, orderDetailSizeValue, orderDetailQuantity)"
-                + " VALUES(?, ?, ?, ?, ? ,? ,?)";
+        String sql = "INSERT INTO OrderDetail(orderId, productId, orderDetailProductImg, orderDetailProductName, orderDetailPriceProduct, orderDetailQuantity)"
+                + " VALUES(?, ?, ?, ?, ? ,?)";
         try ( Connection con = SQLServerConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql);) {
             ps.setObject(1, orderId);
             ps.setObject(2, obj.getProductId());
             ps.setObject(3, obj.getOrderDetailProductImg());
             ps.setObject(4, obj.getOrderDetailProductName());
             ps.setObject(5, obj.getOrderDetailPriceProduct());
-            ps.setObject(6, obj.getOrderDetailSizeValue());
-            ps.setObject(7, obj.getOrderDetailQuantity());
+            ps.setObject(6, obj.getOrderDetailQuantity());
             check = ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace(System.out);

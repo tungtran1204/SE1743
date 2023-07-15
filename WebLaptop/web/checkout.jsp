@@ -44,8 +44,8 @@
             <div class="row px-xl-5">
                 <div class="col-12">
                     <nav class="breadcrumb bg-light mb-30">
-                        <a class="breadcrumb-item text-dark" href="#">Home</a>
-                        <a class="breadcrumb-item text-dark" href="#">Shop</a>
+                        <a class="breadcrumb-item text-dark" href="/WebLaptop">Home</a>
+                        <a class="breadcrumb-item text-dark" href="shop">Shop</a>
                         <span class="breadcrumb-item active">Checkout</span>
                     </nav>
                 </div>
@@ -124,7 +124,7 @@
         <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
         <script>
             function myFunction() {
-                return confirm("Are you sure you want to delete this student?");
+                return confirm("Are you sure you want to order?");
             }
         </script>
         <!-- JavaScript Libraries -->
