@@ -16,14 +16,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Tung</tda>
-                <td>0367767778</td>
-                <td>2023-07-01</td>
-                <td>2023</td>
-                <td><i class="fa-solid fa-eye"></i></td>
-            </tr>
+            <c:forEach items="${requestScope.lstDoneOrder}" var="o" varStatus="i">
+                <tr>
+                    <td>${i.count}</td>
+                    <td>${o.orderNameContact}</td>
+                    <td>${o.orderPhoneContact}</td>
+                    <td>${o.orderCreateDate}</td>
+                    <td>${o.orderDoneDate}</td>
+                    <td><a data-toggle="modal" data-target="#modal-order-detail" href="javascript:void(0)" onclick="getAllOrderDetail(${o.orderId});"><i class="fa-solid fa-eye"></i></a></td>
+                </tr>
+            </c:forEach>
         </tbody>
     </table>
 </div>

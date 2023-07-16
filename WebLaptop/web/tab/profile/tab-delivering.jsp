@@ -18,16 +18,16 @@
             </tr>
         </thead>
         <tbody>
-        <c:forEach items="${requestScope.lstDeliveringOrder}" var="o" varStatus="i">
-            <tr>
-                <td>${i.count}</td>
-                <td>${o.orderNameContact}</td>
-                <td>${o.orderPhoneContact}</td>
-                <td>${o.orderCreateDate}</td>
-                <td>${o.orderExpectedDate}</td>
-                <td><a data-toggle="modal" data-target="#modal-order-detail" href="javascript:void(0)" onclick="getAllOrderDetail(${o.orderId});"><i class="fa-solid fa-eye"></i></a></td>
-            </tr>
-        </c:forEach>
+            <c:forEach items="${requestScope.lstDeliveringOrder}" var="o" varStatus="i">
+                <tr>
+                    <td>${i.count}</td>
+                    <td>${o.orderNameContact}</td>
+                    <td>${o.orderPhoneContact}</td>
+                    <td>${o.orderCreateDate}</td>
+                    <td>${o.orderExpectedDate}</td>
+                    <td><a data-toggle="modal" data-target="#modal-order-detail" href="javascript:void(0)" onclick="getAllOrderDetail(${o.orderId});"><i class="fa-solid fa-eye"></i></a></td>
+                </tr>
+            </c:forEach>
         </tbody>
     </table>
 </div>

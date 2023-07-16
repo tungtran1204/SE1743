@@ -150,7 +150,7 @@
                     </div>
                 </div>
             </main>
-        <%@include file="modal/modal-order-detail.jsp" %>
+        <%@include file="modal/profile/modal-order-detail.jsp" %>
         <!--   Core JS Files   -->
         <script src="assets/js/core/popper.min.js"></script>
         <script src="assets/js/core/bootstrap.min.js"></script>
@@ -170,7 +170,11 @@
         <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
         <script src="assets/js/material-dashboard.min.js?v=3.0.5"></script>
         <script>
+//            function zzz (orderId) {
+//                alert(123);
+//            }
                                                             function getAllOrderDetail(orderId) {
+//                                                                alert(123);
                                                                 const request = new XMLHttpRequest();
                                                                 request.open("GET", "api/orderDetail?orderId=" + orderId, true);
                                                                 request.onload = function () {

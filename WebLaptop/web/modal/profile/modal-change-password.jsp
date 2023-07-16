@@ -33,8 +33,8 @@
                             class="form-control"
                             id="newPass"
                             name="newPass"
-                            pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
-                            title="password must contain at least eight characters, at least one number and both lower and uppercase letters and special characters"
+                            
+                            
                             required
                             maxlength="50"
                             />
