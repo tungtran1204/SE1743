@@ -71,11 +71,13 @@
                                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     Price
                                                 </th>
-                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                    View
-                                                </th>
+                                                
+                                                
                                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     Delete
+                                                </th>
+                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                    Edit
                                                 </th>
                                             </tr>
                                         </thead>
@@ -99,12 +101,13 @@
                                                     <td class="align-middle text-center text-sm">
                                                         <span class="text-secondary text-xs font-weight-bold">${p.productPrice} VND</span>
                                                     </td>
+                                                    
+                                                    <td class="align-middle text-center"> 
+                                                        <a href="delete-product?productId=${p.productId}"><i class="fa-solid fa-trash"></i></a>
+                                                    </td>
                                                     <td class="align-middle text-center">
                                                         <a href="product-detail-management?productId=${p.productId}"><i
                                                                 class="fa-solid fa-eye"></i></a>
-                                                    </td>
-                                                    <td class="align-middle text-center"> 
-                                                        <a href="delete-product?productId=${p.productId}"><i class="fa-solid fa-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             </c:forEach>
